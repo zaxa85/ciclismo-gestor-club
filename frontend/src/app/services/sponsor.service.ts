@@ -4,7 +4,7 @@ import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import { User } from '../models/index';
 
 @Injectable()
-export class MemberService {
+export class SponsorService {
     constructor(private http: Http) { }
 
     getAll() {

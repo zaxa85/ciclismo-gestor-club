@@ -6,6 +6,10 @@ import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { routing } from './app.routing';
 
+import { AlertComponent } from './directives/index';
+import { AuthGuard } from './guards/index';
+import { AlertService, AuthenticationService, LoginService, MemberService, SponsorService } from './services/index';
+
 import { LoginComponent } from './login/index';
 import { ControlBalanceComponent } from './control/index';
 import { ControlPaymentComponent } from './control/index';
@@ -31,8 +35,7 @@ import { RegisterSponsorComponent } from './sponsor/index';
     AuthGuard,
     AlertService,
     AuthenticationService,
-    UserService
-    MemberService
+    MemberService,
     SponsorService
   ],
   bootstrap: [AppComponent]

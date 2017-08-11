@@ -5,7 +5,7 @@ import { AlertService, AuthenticationService } from '../services/index';
 
 @Component({
     moduleId: module.id,
-    templateUrl: 'login.component.html'
+    templateUrl: 'control.balance.html'
 })
 
-export class LoginComponent {}
+export class ControlBalanceComponent {}

@@ -2,5 +2,15 @@
   "db": {
     "name": "db",
     "connector": "memory"
+  },
+  "Postgres": {
+    "host": "localhost",
+    "port": 5432,
+    "url": "",
+    "database": "ciclismo-club",
+    "password": "postgres",
+    "name": "Postgres",
+    "user": "postgres",
+    "connector": "postgresql"
   }
 }

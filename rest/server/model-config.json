@@ -35,11 +35,16 @@
     "dataSource": "db",
     "public": false
   },
-  "Note": {
-    "dataSource": "db"
+  "user": {
+    "dataSource": "Postgres",
+    "public": true
   },
-  "kkk": {
-    "dataSource": "db",
+  "user2": {
+    "dataSource": "Postgres",
+    "public": true
+  },
+  "member": {
+    "dataSource": "Postgres",
     "public": true
   }
 }

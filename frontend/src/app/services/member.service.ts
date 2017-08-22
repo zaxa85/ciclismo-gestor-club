@@ -1,30 +1,38 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
 
-import { User } from '../models/index';
+import { Member } from '../models/index';
 
 @Injectable()
 export class MemberService {
     constructor(private http: Http) { }
 
     getAll() {
-        return this.http.get('/api/users', this.jwt()).map((response: Response) => response.json());
+        return this.http.get('http://localhost:3000/api/member', this.jwt()).map((response: Response) => response.json());
+    }
+    // http://localhost:3000/api/member?filter={"where":{"status":0}}
+
+    getByStatus(status: number) {       
+        return this.http.get('http://localhost:3000/api/member', {
+            search:
+            { filter: JSON.stringify({"where": { status: status} })}
+        }).map((response: Response) => response.json());
     }
 
     getById(id: number) {
-        return this.http.get('/api/users/' + id, this.jwt()).map((response: Response) => response.json());
+        return this.http.get('http://localhost:3000/api/member/' + id, this.jwt()).map((response: Response) => response.json());
     }
 
-    create(user: User) {
-        return this.http.post('/api/users', user, this.jwt()).map((response: Response) => response.json());
+    create(member: Member) {
+        return this.http.post('http://localhost:3000/api/member/', member, this.jwt()).map((response: Response) => response.json());
     }
 
-    update(user: User) {
-        return this.http.put('/api/users/' + user.id, user, this.jwt()).map((response: Response) => response.json());
+    update(member: Member) {
+        return this.http.patch('http://localhost:3000/api/member/' + member.id, member, this.jwt()).map((response: Response) => response.json());
     }
 
     delete(id: number) {
-        return this.http.delete('/api/users/' + id, this.jwt()).map((response: Response) => response.json());
+        return this.http.delete('http://localhost:3000/api/member/' + id, this.jwt()).map((response: Response) => response.json());
     }
 
     // private helper methods

@@ -1,18 +1,34 @@
 <div>
-	<nav class='navbar navbar-default'>
-		<div class='container-fluid'>
-			<ul class='nav navbar-nav'>
-				<li><a [routerLink]="['']">Inicio</a></li>
-				<li><a [routerLink]="['/member.list']">Gestión de Socios</a></li>
-				<li><a [routerLink]="['/member.list']">Gestión de Aportes</a></li>
-				<li><a [routerLink]="['/member.list']">Balance</a></li>
-				<li><a [routerLink]="['/user.list']">Configuración</a></li>
-				<li><a [routerLink]="['/login']">Cerrar Sesión</a></li>
-			</ul>
+	<nav class="navbar navbar-inverse">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse"
+					data-target="#myNavbar">
+					<span class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#"></a>
+			</div>
+			<div class="collapse navbar-collapse" id="myNavbar">
+				<ul class="nav navbar-nav">
+					<li><a [routerLink]="['']">Inicio</a></li>
+					<li><a [routerLink]="['/member.list']">Gestión
+							de Socios</a></li>
+					<li><a [routerLink]="['/control.payment']">Gestión de
+							Aportes</a></li>
+					<li><a  class="active" [routerLink]="['/control.balance']">Balance</a></li>
+				</ul>
+				<ul class="nav navbar-nav navbar-right">
+					<li><a [routerLink]="['/user.list']"><span
+							class="glyphicon glyphicon-user"></span> Configuración</a></li>
+					<li><a [routerLink]="['/login']"><span
+							class="glyphicon glyphicon-log-out"></span> Salir</a></li>
+				</ul>
+			</div>
 		</div>
 	</nav>
-	<h4>Balance</h4>	
-	
+	<h4>Balance</h4>
+
 	<div class='container'>
 		<router-outlet></router-outlet>
 	</div>

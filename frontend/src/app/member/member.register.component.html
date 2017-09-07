@@ -3,69 +3,39 @@
 
 <div class="col-md-6 col-md-offset-3">
 	<h3>
-		<div *ngIf="member;else content">Editar de Socios
-		<input id="action" type="hidden" value="edit">
-		
-		</div>
 		<ng-template #content> Registro de Socios </ng-template>
 	</h3>
-	<!-- 
-	<form name="form" (ngSubmit)="f.form.valid && register()" #f="ngForm"
-	 -->
+
+	<form data-toggle="validator" role="form" name="form" (ngSubmit)="f.form.valid && register()" #f="ngForm" novalidate>
 	
-	<form name="form" (ngSubmit)="register()" #f="ngForm"
-		novalidate>
-		
-		<div class="form-group" [ngClass]="{ 'has-error': f.submitted && !status.valid }">
-			<label for="id">id</label> <input type="text"
-				class="form-control" name="id" [(ngModel)]="model.id"
-				#id="ngModel" required value="{{member.id}}" />
+		<div class="form-group" [ngClass]="{ 'has-error': f.submitted }">
+			<input type="hidden" class="form-control" name="id" [(ngModel)]="member.id" #id="ngModel" value="{{member.id}}" />
+		</div>		
+		<div class="form-group" [ngClass]="{ 'has-error': f.submitted  && !status.valid}">
+			<label for="status">Estado</label> <select class="form-control" [(ngModel)]="member.status" name=status #status="ngModel" >
+				<option *ngFor="let c of statuses" [ngValue]="c.id">{{c.name}}</option>
+			</select>
+		</div>		
+		<div class="form-group" [ngClass]="{ 'has-error': f.submitted && !firstname.valid }">
+			<label for="firstname">Nombre</label> <input type="text" class="form-control" name="firstname" [(ngModel)]="member.firstname" #firstname="ngModel" required value="{{member.firstname}}" />
+			<div *ngIf="f.submitted && !firstname.valid" class="help-block">Nombre es requerido</div>
+		</div>		
+		<div class="form-group" [ngClass]="{ 'has-error': f.submitted && !lastname.valid }">
+			<label for="lastname">Apellido</label> <input type="text" class="form-control" name="lastname" [(ngModel)]="member.lastname" #lastname="ngModel" required value="{{member.lastname}}" />
+			<div *ngIf="f.submitted && !lastname.valid" class="help-block">Apellido es requerido</div>
+		</div> 
+		<div class="form-group" [ngClass]="{ 'has-error': f.submitted && !dob.valid}">
+			<label for="dob">Fecha de Nacimiento [MM/DD/YYYY]</label> <input type="date" class="form-control" name="dob" required
+				 [ngModel]="member.dob | date: 'yyyy-MM-dd'" #dob="ngModel" required (ngModelChange)="dateChanged1($event)"/>
+			<div *ngIf="f.submitted && !dob.valid" class="help-block">La fecha de nacimiento es obligatorio</div>
 		</div>
-		
-		<div class="form-group"
-			[ngClass]="{ 'has-error': f.submitted && !status.valid }">
-			<label for="status">status</label> <input type="text"
-				class="form-control" name="status" [(ngModel)]="model.status"
-				#status="ngModel" required value="{{member.status}}" />
-			<div *ngIf="f.submitted && !status.valid" class="help-block">status
-				is required</div>
-		</div>
-		
-		
-		<div class="form-group"
-			[ngClass]="{ 'has-error': f.submitted && !firstname.valid }">
-			<label for="firstname">Nombre</label> <input type="text"
-				class="form-control" name="firstname" [(ngModel)]="model.firstname"
-				#firstname="ngModel" required value="{{member.firstname}}" />
-			<div *ngIf="f.submitted && !firstname.valid" class="help-block">First
-				Name is required</div>
-		</div>
-		<div class="form-group"
-			[ngClass]="{ 'has-error': f.submitted && !lastname.valid }">
-			<label for="lastname">Apellido</label> <input type="text"
-				class="form-control" name="lastname" [(ngModel)]="model.lastname"
-				#lastname="ngModel" required value="{{member.lastname}}" />
-			<div *ngIf="f.submitted && !lastname.valid" class="help-block">Last
-				Name is required</div>
-		</div>
-		<div class="form-group"
-			[ngClass]="{ 'has-error': f.submitted && !dob.valid }">
-			<label for="dob">Fecha de Nacimiento</label> <input type="text"
-				class="form-control" name="username" [(ngModel)]="model.dob"
-				#dob="ngModel" required value="{{member.dob}}" />
-			<div *ngIf="f.submitted && !dob.valid" class="help-block">DOB
-				is required</div>
-		</div>
-		<div class="form-group"
-			[ngClass]="{ 'has-error': f.submitted && !datestart.valid }">
-			<label for="datestart">Fecha de Ingreso</label> <input type="text"
-				class="form-control" name="password" [(ngModel)]="model.datestart"
-				#datestart="ngModel" required value="{{member.datestart}}" />
-			<div *ngIf="f.submitted && !datestart.valid" class="help-block">Date
-				Start is required</div>
-		</div>
+		<div class="form-group" [ngClass]="{ 'has-error': f.submitted && !datestart.valid}">
+			<label for="datestart">Fecha de Ingreso [MM/DD/YYYY]</label> <input type="date" class="form-control" name="datestart" required
+				 [ngModel]="member.datestart | date: 'yyyy-MM-dd'" #datestart="ngModel" required (ngModelChange)="dateChanged2($event)"/>
+			<div *ngIf="f.submitted && !datestart.valid" class="help-block">La Fecha de inicio de requerido</div>
+		</div>		
 		<div class="form-group">
-			<button [disabled]="loading" class="btn btn-primary">Registrar</button>
+			<button type="submit" [disabled]="loading" class="btn btn-primary">Guardar</button>
 			<img *ngIf="loading"
 				src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
 			<a [routerLink]="['/member.list']" class="btn btn-link">Regresar</a>

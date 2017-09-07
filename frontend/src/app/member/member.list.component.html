@@ -2,10 +2,8 @@
 	<nav class="navbar navbar-inverse">
 		<div class="container-fluid">
 			<div class="navbar-header">
-				<button type="button" class="navbar-toggle" data-toggle="collapse"
-					data-target="#myNavbar">
-					<span class="icon-bar"></span> <span class="icon-bar"></span> <span
-						class="icon-bar"></span>
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+					<span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
 				</button>
 				<a class="navbar-brand" href="#"></a>
 			</div>
@@ -13,56 +11,57 @@
 				<ul class="nav navbar-nav">
 					<li><a [routerLink]="['']">Inicio</a></li>
 					<li class="active"><a [routerLink]="['/member.list']">Gestión de Socios</a></li>
-					<li><a [routerLink]="['/control.payment']">Gestión de
-							Aportes</a></li>
+					<li><a [routerLink]="['/control.payment']">Gestión de Aportes</a></li>
 					<li><a [routerLink]="['/control.balance']">Balance</a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
-					<li><a [routerLink]="['/user.list']"><span
-							class="glyphicon glyphicon-user"></span> Configuración</a></li>
-					<li><a [routerLink]="['/login']"><span
-							class="glyphicon glyphicon-log-out"></span> Salir</a></li>
+					<li><a [routerLink]="['/user.list']"><span class="glyphicon glyphicon-user"></span> Configuración</a></li>
+					<li><a [routerLink]="['/login']"><span class="glyphicon glyphicon-log-out"></span> Salir</a></li>
 				</ul>
 			</div>
 		</div>
 	</nav>
 	<h4>Socios Registrados:</h4>
-	<a class="btn btn-default btn-sm" [routerLink]="['/member.register']">Registrar nuevo socio</a><br>
-	<br>
+	<a class="btn btn-default btn-sm" [routerLink]="['/member.register']">Registrar nuevo socio</a><br> <br>
 	<table>
 		<tr>
 			<td style="width: 10%">Filtrar:</td>
-			<td style="width: 20%"><input type="text" width="50px" maxlength="50"></td>
+			<td style="width: 20%"><input class="form-control" type="text" width="50px" maxlength="50"></td>
 			<td style="width: 10%"></td>
 			<td style="width: 10%">Estado</td>
-			<td style="width: 20%"><select><option value="1">Activos</option>
-					<option value="0">Inactivos</option></select></td>
-			<td style="width: 40%"></td>
+			<td style="width: 20%"><select class="form-control" [(ngModel)]="statusFilter" name=statusFilter (change)="onChange($event.target.value)">
+				<option *ngFor="let c of statuses" value="{{c.id}}" >{{c.name}}</option>
+			<!-- 
+				<option value="">Todos</option>
+				  -->
+				</select></td>
+			<td style="width: 40%"> 
+			
+				</td>
 		</tr>
 	</table>
 	<br>
 
 	<table class="table table-hover table-sm table-inverse">
-	<thead>
-		<tr>
-			<th style="width: 5%">#</th>
-			<th style="width: 25%">Nombres</th>
-			<th class="table-active">Fecha de Nacimiento</th>
-			<th style="width: 20%">Fecha de inicio</th>
-			<th style="width: 10%">Estado</th>
-			<th style="width: 20%"></th>
-		</tr>
+		<thead>
+			<tr>
+				<th style="width: 5%">#</th>
+				<th style="width: 25%">Nombres</th>
+				<th class="table-active">Fecha de Nacimiento</th>
+				<th style="width: 20%">Fecha de inicio</th>
+				<th style="width: 10%">Estado</th>
+				<th style="width: 20%"></th>
+			</tr>
 		</thead>
 		<tbody>
-		<tr *ngFor="let member of members">
-			<td class="table-active">{{member.id}}</td>
-			<td>{{member.firstname}} {{member.lastname}}</td>
-			<td class="table-success">{{member.dob}}</td>
-			<td class="table-active">{{member.datestart}}</td>
-			<td>{{member.status}}</td>
-			<td><a [routerLink]="['/member.register', member.id]">Modificar</a>
-				| <a (click)="deleteMember(member.ida)">Baja</a></td>
-		</tr>
+			<tr *ngFor="let member of members">
+				<td class="table-active">{{member.id}}</td>
+				<td>{{member.firstname}} {{member.lastname}}</td>
+				<td class="table-success">{{member.dob}}</td>
+				<td class="table-active">{{member.datestart}}</td>
+				<td>{{showStatusDescription(member.status)}}</td>
+				<td><a [routerLink]="['/member.register', member.id]">Modificar</a> | <a (click)="deleteMember(member.ida)">Baja</a></td>
+			</tr>
 		</tbody>
 	</table>
 </div>

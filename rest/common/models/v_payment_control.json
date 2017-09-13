@@ -1,0 +1,69 @@
+{
+  "name": "v_payment_control",
+  "plural": "v_payment_control",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "id": {
+      "type": "number",
+      "required": true
+    },
+    "firstname": {
+      "type": "string",
+      "required": true
+    },
+    "lastname": {
+      "type": "string",
+      "required": true
+    },
+    "datestart": {
+      "type": "date"
+    },
+    "period": {
+      "type": "string"
+    },
+    "jan": {
+      "type": "string"
+    },
+    "feb": {
+      "type": "string"
+    },
+    "mar": {
+      "type": "string"
+    },
+    "apr": {
+      "type": "string"
+    },
+    "may": {
+      "type": "string"
+    },
+    "jun": {
+      "type": "string"
+    },
+    "jul": {
+      "type": "string"
+    },
+    "aug": {
+      "type": "string"
+    },
+    "sep": {
+      "type": "string"
+    },
+    "oct": {
+      "type": "string"
+    },
+    "nov": {
+      "type": "string"
+    },
+    "dec": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

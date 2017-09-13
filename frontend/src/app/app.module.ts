@@ -8,7 +8,14 @@ import { routing } from './app.routing';
 
 import { AlertComponent } from './directives/index';
 import { AuthGuard } from './guards/index';
-import { AlertService, AuthenticationService, LoginService, MemberService, SponsorService, UserService } from './services/index';
+import { 
+        AlertService, 
+        AuthenticationService, 
+        LoginService, 
+        MemberService, 
+        SponsorService, 
+        UserService, 
+        PaymentService } from './services/index';
 
 import { LoginComponent } from './login/index';
 import { HomeComponent } from './home/index';
@@ -16,6 +23,7 @@ import { ControlBalanceComponent } from './control/index';
 import { ControlPaymentComponent } from './control/index';
 import { MemberListComponent } from './member/index';
 import { RegisterMemberComponent } from './member/index';
+import { RegisterPaymentComponent } from './control/index';
 import { RegisterSponsorComponent } from './sponsor/index';
 
 @NgModule({
@@ -27,6 +35,7 @@ import { RegisterSponsorComponent } from './sponsor/index';
     ControlBalanceComponent, 
     ControlPaymentComponent, 
     RegisterMemberComponent, 
+    RegisterPaymentComponent, 
     MemberListComponent,
     RegisterSponsorComponent
   ],
@@ -42,7 +51,8 @@ import { RegisterSponsorComponent } from './sponsor/index';
     AuthenticationService,
     MemberService,
     UserService,
-    SponsorService
+    SponsorService,
+    PaymentService
   ],
   bootstrap: [AppComponent]
 })

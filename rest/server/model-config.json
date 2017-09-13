@@ -46,5 +46,13 @@
   "member": {
     "dataSource": "Postgres",
     "public": true
+  },
+  "payment": {
+    "dataSource": "Postgres",
+    "public": true
+  },
+  "v_payment_control": {
+    "dataSource": "Postgres",
+    "public": true
   }
 }

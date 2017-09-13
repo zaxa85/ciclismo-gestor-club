@@ -8,7 +8,7 @@ import { RegisterMemberComponent } from './member/index';
 import { MemberListComponent } from './member/index';
 
 import { RegisterSponsorComponent } from './sponsor/index';
-
+import { RegisterPaymentComponent } from './control/index';
 import { AuthGuard } from './guards/index';
 
 const appRoutes: Routes = [
@@ -16,6 +16,7 @@ const appRoutes: Routes = [
     { path: 'login', component: LoginComponent },
     { path: 'control.balance', component: ControlBalanceComponent },
     { path: 'control.payment', component: ControlPaymentComponent },
+    { path: 'control.register.payment', component: RegisterPaymentComponent },
     { path: 'member.register', component: RegisterMemberComponent },
      { path: 'member.register/:id', 
         canActivate: [ AuthGuard],

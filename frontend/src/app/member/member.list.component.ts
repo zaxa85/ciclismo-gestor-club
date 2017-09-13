@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-
 import { Member } from '../models/index';
 import { User } from '../models/index';
-
 import { MemberService } from '../services/index';
 import { DatePipe } from '@angular/common';
 

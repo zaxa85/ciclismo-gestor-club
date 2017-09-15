@@ -7,6 +7,8 @@ import { AppComponent } from './app.component';
 import { routing } from './app.routing';
 
 import { AlertComponent } from './directives/index';
+import { NavbarComponent } from './directives/index';
+
 import { AuthGuard } from './guards/index';
 import { 
         AlertService, 
@@ -30,6 +32,7 @@ import { RegisterSponsorComponent } from './sponsor/index';
   declarations: [
     AppComponent,
     AlertComponent,
+    NavbarComponent,
     HomeComponent,
     LoginComponent, 
     ControlBalanceComponent, 

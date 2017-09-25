@@ -17,7 +17,9 @@ import {
         MemberService, 
         SponsorService, 
         UserService, 
-        PaymentService } from './services/index';
+        PaymentService,
+        IncomeService,
+        ExpenditureService } from './services/index';
 
 import { LoginComponent } from './login/index';
 import { HomeComponent } from './home/index';
@@ -27,6 +29,9 @@ import { MemberListComponent } from './member/index';
 import { RegisterMemberComponent } from './member/index';
 import { RegisterPaymentComponent } from './control/index';
 import { RegisterSponsorComponent } from './sponsor/index';
+import { RegisterIncomeComponent } from './control/index';
+import { RegisterExpenditureComponent} from './control/index';
+
 
 @NgModule({
   declarations: [
@@ -40,7 +45,9 @@ import { RegisterSponsorComponent } from './sponsor/index';
     RegisterMemberComponent, 
     RegisterPaymentComponent, 
     MemberListComponent,
-    RegisterSponsorComponent
+    RegisterSponsorComponent,
+    RegisterIncomeComponent,
+    RegisterExpenditureComponent
   ],
   imports: [
     BrowserModule,
@@ -55,7 +62,9 @@ import { RegisterSponsorComponent } from './sponsor/index';
     MemberService,
     UserService,
     SponsorService,
-    PaymentService
+    PaymentService,
+    IncomeService,
+    ExpenditureService
   ],
   bootstrap: [AppComponent]
 })

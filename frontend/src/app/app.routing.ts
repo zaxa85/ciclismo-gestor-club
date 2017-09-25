@@ -9,6 +9,8 @@ import { MemberListComponent } from './member/index';
 
 import { RegisterSponsorComponent } from './sponsor/index';
 import { RegisterPaymentComponent } from './control/index';
+import { RegisterIncomeComponent } from './control/index';
+import { RegisterExpenditureComponent } from './control/index';
 import { AuthGuard } from './guards/index';
 
 const appRoutes: Routes = [
@@ -24,6 +26,8 @@ const appRoutes: Routes = [
         component: RegisterMemberComponent},
     { path: 'member.list', component: MemberListComponent },
     { path: 'sponsor.register', component: RegisterSponsorComponent },
+    { path: 'income.register', component: RegisterIncomeComponent },
+    { path: 'expenditure.register', component: RegisterExpenditureComponent },    
     // otherwise redirect to home
     { path: '**', redirectTo: '' }
 ];

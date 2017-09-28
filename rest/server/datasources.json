@@ -8,6 +8,7 @@
     "port": 5432,
     "url": "",
     "database": "ciclismo-club",
+
     "password": "postgres",
     "name": "Postgres",
     "user": "postgres",

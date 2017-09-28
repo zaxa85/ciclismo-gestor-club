@@ -5,3 +5,5 @@ export * from './member.service';
 export * from './sponsor.service';
 export * from './user.service';
 export * from './payment.service';
+export * from './expenditure.service';
+export * from './income.service';

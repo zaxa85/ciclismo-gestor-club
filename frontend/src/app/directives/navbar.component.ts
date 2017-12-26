@@ -1,8 +1,9 @@
 // core/navbar.component.ts
 import { Component } from '@angular/core';
+
 @Component({
-    selector: 'ct-navbar',
-     templateUrl: 'navbar.component.html'
+     templateUrl: 'navbar.component.html',
+     selector: 'ct-navbar',
 })
 export class NavbarComponent {
     isIn = false;   // store state

@@ -51,6 +51,14 @@
     "dataSource": "Postgres",
     "public": true
   },
+  "income": {
+    "dataSource": "Postgres",
+    "public": true
+  },
+  "expenditure": {
+    "dataSource": "Postgres",
+    "public": true
+  },
   "v_payment_control": {
     "dataSource": "Postgres",
     "public": true

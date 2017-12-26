@@ -2,9 +2,9 @@ export class Expenditure {
     
     id: number;
     description: string;
-    category: string;
-    reason: string;
     status: number;
+    type: number;
+    amount: number;
     
     constructor(
     ) { }

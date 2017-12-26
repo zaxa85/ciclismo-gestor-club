@@ -17,10 +17,29 @@
               [ngClass]="{ 'in': isIn }"> 
 			<ul class="nav navbar-nav">
 				<li class="nav-item" routerLinkActive="active"><a class="nav-link" [routerLink]="['/home']">Inicio</a></li>
+				<li class="nav-item" routerLinkActive="active"><a class="nav-link" [routerLink]="['/sport.manager']">Gestión Deportiva</a></li>
 				<li class="nav-item" routerLinkActive="active"><a class="nav-link" [routerLink]="['/member.list']">Gestión de Socios</a></li>
 				<li class="nav-item" routerLinkActive="active"><a class="nav-link" [routerLink]="['/control.payment']">Gestión de Aportes</a></li>
 				<li class="nav-item" routerLinkActive="active"><a class="nav-link" [routerLink]="['/control.balance']">Balance</a></li>
+				<!-- 
+				<li class="dropdown">
+					<a class="dropdown-toggle" data-toggle="dropdown" (click)="toggleState()" href="#">Gestión Financiera
+					<span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li class="nav-item" routerLinkActive="active"><a class="nav-link" [routerLink]="['/control.balance']">Registro de Aportes de Socios</a></li>					  
+						<li class="nav-item" routerLinkActive="active"><a class="nav-link" [routerLink]="['/control.balance']">Registro de Ingresos</a></li>					  
+						<li class="nav-item" routerLinkActive="active"><a class="nav-link" [routerLink]="['/control.balance']">Registro de Compras / Gastos</a></li>					  
+						<li class="nav-item" routerLinkActive="active"><a class="nav-link" [routerLink]="['/control.balance']">Consulta de Aporte Individual</a></li>
+ 						<li class="nav-item" routerLinkActive="active"><a class="nav-link" [routerLink]="['/control.balance']">Balance</a></li>
+					</ul>
+			    </li>
+			
+			-->
 			</ul>
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="#"><span class="glyphicon glyphicon-cog"></span>Condiguración</a></li>
+				<li><a (click)="logout()"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+			  </ul>
 		</div>
 	</div>
 </nav>

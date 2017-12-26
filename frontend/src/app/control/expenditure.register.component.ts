@@ -17,6 +17,12 @@ export class RegisterExpenditureComponent {
     errorMessage: string;
     expenditure: Expenditure;
     statuses = [{ id: 1, name: "Activo" }, { id: 2, name: "Suspendido" }, { id: 0, name: "Inactivo" }];
+    types = [{ id: 1, name: "Gastos por tramites" }, 
+                { id: 2, name: "Gastos por transporte" }, 
+                { id: 3, name: "Gastos por inscripciones" }, 
+                { id: 4, name: "Gastos por reuniones" }, 
+                { id: 0, name: "Gastos de competencia" }];
+
     test: string;
 
     constructor(
@@ -38,7 +44,8 @@ export class RegisterExpenditureComponent {
                 .subscribe(
                 data => {
                     this.alertService.success('Registro exitoso', true);
-                    this.router.navigate(['/expenditure.list']);
+                    //this.router.navigate(['/expenditure.list']);
+                    this.router.navigate(['/control.payment']);
                 },
                 error => {
                     this.alertService.error(error);
@@ -52,7 +59,8 @@ export class RegisterExpenditureComponent {
                 .subscribe(
                 data => {
                     this.alertService.success('Modificación exitosa', true);
-                    this.router.navigate(['/expenditure.list']);
+                    //this.router.navigate(['/expenditure.list']);
+                    this.router.navigate(['/control.payment']);
                 },
                 error => {
                     this.alertService.error(error);
@@ -67,7 +75,7 @@ export class RegisterExpenditureComponent {
         //Initializing expenditure
         this.expenditure = new Expenditure();
         this.expenditure.status = 1;
-
+        this.expenditure.type = 0;
       //  this.expenditure.datestart = new Date();//this.datePipe.transform(new Date(), 'yyyy-MM-dd');
        // this.expenditure.dob = new Date(); //this.datePipe.transform(new Date(), 'yyyy-MM-dd');
 

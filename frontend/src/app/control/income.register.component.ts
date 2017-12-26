@@ -17,6 +17,7 @@ export class RegisterIncomeComponent {
     errorMessage: string;
     income: Income;
     statuses = [{ id: 1, name: "Activo" }, { id: 2, name: "Suspendido" }, { id: 0, name: "Inactivo" }];
+    types = [{ id: 1, name: "Auspicio" }, { id: 2, name: "Donación" }, { id: 0, name: "Ganancia" }];
     test: string;
 
     constructor(
@@ -38,7 +39,8 @@ export class RegisterIncomeComponent {
                 .subscribe(
                 data => {
                     this.alertService.success('Registro exitoso', true);
-                    this.router.navigate(['/income.list']);
+                    //this.router.navigate(['/income.list']);
+                    this.router.navigate(['/control.payment']);
                 },
                 error => {
                     this.alertService.error(error);
@@ -52,7 +54,8 @@ export class RegisterIncomeComponent {
                 .subscribe(
                 data => {
                     this.alertService.success('Modificación exitosa', true);
-                    this.router.navigate(['/income.list']);
+                    //this.router.navigate(['/income.list']);
+                    this.router.navigate(['/control.payment']);
                 },
                 error => {
                     this.alertService.error(error);
@@ -67,8 +70,7 @@ export class RegisterIncomeComponent {
         //Initializing income
         this.income = new Income();
         this.income.status = 1;
-
-      //  this.income.datestart = new Date();//this.datePipe.transform(new Date(), 'yyyy-MM-dd');
+        this.income.type = 1;
 
         //Loading income if it exists
         this.sub = this.route.params

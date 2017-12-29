@@ -1,62 +1,83 @@
+<mat-sidenav-container fullscreen>
+	<mat-sidenav mode="over" #sidenav>
+
+		<div fxLayout="column" *ngIf=isLogged>
+			<mat-toolbar fxLayoutAlign="left left">
+				<button mat-button [routerLink]="['/home']" (click)="sidenav.open()">
+					<mat-icon>home</mat-icon>
+				</button>
+			</mat-toolbar>
+			<button mat-button [routerLink]="['/member.list']">Gestión de Socios</button>
+			<button mat-button [routerLink]="['/sport.manager']">Gestión Deportiva</button>
+			<button mat-button [routerLink]="['/control.payment']">Gestión Financiera</button>
 
 
+			<div collapse class="card card-block card-header">
 
-<nav class="navbar navbar-inverse">
-	<div class="container">
+				<button mat-button [matMenuTriggerFor]="menu">Gestión Financiera</button>
+				<mat-menu #menu="matMenu" [overlapTrigger]="true">
+					<button mat-button [routerLink]="['/control.balance']">Registro de Aportes de Socios</button>
+					<button mat-button [routerLink]="['/control.payment']">Registro de Ingresos</button>
+					<button mat-button [routerLink]="['/control.balance']">Registro de Compras / Gastos</button>
+					<button mat-button [routerLink]="['/control.balance']">Consulta de Aporte Individual</button>
+					<button mat-button [routerLink]="['/control.balance']">Balance</button>
+				</mat-menu>
 
-		<div class="navbar-header">
-						
-			<button type="button" 
-                        class="navbar-toggle collapsed"
-                        (click)="toggleState()">
-				<span class="sr-only">Toggle navigation</span>
-				<span class="icon-bar"></span> 
-				<span class="icon-bar"></span> 
-				<span class="icon-bar"></span>
+			</div>
+
+			<button mat-button [routerLink]="['/home']">
+				<mat-icon>power_settings_new
+				</mat-icon>
 			</button>
-			<a class="navbar-brand" [routerLink]="['/home']"><div>Selección de Campeones</div></a>
+			<button mat-button (click)="logout()">
+				<mat-icon>settings</mat-icon>
+			</button>
 		</div>
-		<div class="collapse navbar-collapse"
-              [ngClass]="{ 'in': isIn }"> 
-			<ul class="nav navbar-nav">
-				<li class="nav-item" routerLinkActive="active"><a class="nav-link" [routerLink]="['/home']">Inicio</a></li>
-<!--
-				<li class="nav-item" routerLinkActive="active"><a class="nav-link" [routerLink]="['/sport.manager']">Gestión Deportiva</a></li>
--->
-				<li class="nav-item" routerLinkActive="active"><a class="nav-link" [routerLink]="['/member.list']">Gestión de Socios</a></li>
-				<li class="nav-item" routerLinkActive="active"><a class="nav-link" [routerLink]="['/control.payment']">Gestión de Aportes</a></li>
-				<li class="nav-item" routerLinkActive="active"><a class="nav-link" [routerLink]="['/control.balance']">Balance</a></li>
-				
-				<li class="dropdown">
-					<a class="dropdown-toggle" data-toggle="dropdown" href="#">Gestión Financiera
-					<span class="caret"></span></a>
-					<ul class="dropdown-menu">
-						<li class="nav-item" routerLinkActive="active"><a class="nav-link" [routerLink]="['/control.balance']">Registro de Aportes de Socios</a></li>					  
-						<li class="nav-item" routerLinkActive="active"><a class="nav-link" [routerLink]="['/control.payment']">Registro de Ingresos</a></li>					  
-						<li class="nav-item" routerLinkActive="active"><a class="nav-link" [routerLink]="['/control.balance']">Registro de Compras / Gastos</a></li>					  
-						<li class="nav-item" routerLinkActive="active"><a class="nav-link" [routerLink]="['/control.balance']">Consulta de Aporte Individual</a></li>
- 						<li class="nav-item" routerLinkActive="active"><a class="nav-link" [routerLink]="['/control.balance']">Balance</a></li>
-					</ul>
-			    </li>
-			
-				<li>
-					<button mat-button [matMenuTriggerFor]="menu">Menu</button>
-					<mat-menu #menu="matMenu">
-						<li class="nav-item" routerLinkActive="active"><a class="nav-link" [routerLink]="['/control.balance']">Registro de Aportes de Socios</a></li>					  
-						<li class="nav-item" routerLinkActive="active"><a class="nav-link" [routerLink]="['/control.payment']">Registro de Ingresos</a></li>					  
-						<li class="nav-item" routerLinkActive="active"><a class="nav-link" [routerLink]="['/control.balance']">Registro de Compras / Gastos</a></li>					  
-						<li class="nav-item" routerLinkActive="active"><button mat-button class="nav-link" [routerLink]="['/control.balance']">Consulta de Aporte Individual</button></li>
- 						<li class="nav-item" routerLinkActive="active"><button mat-button class="nav-link" [routerLink]="['/control.balance']">Balance</button></li>
-					</mat-menu>
-			    </li>
-						
-			</ul>
-			<ul class="nav navbar-nav navbar-right">
-				<li><a href="#"><span class="glyphicon glyphicon-cog"></span>Condiguración</a></li>
-				<li><a (click)="logout()"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
-			  </ul>
-		</div>
+
+		
+	</mat-sidenav>
+
+	<div *ngIf=isLogged>
+		<mat-toolbar>
+
+			<button mat-button (click)="sidenav.open()" fxHide="false" fxHide.gt-sm>
+				<mat-icon>menu</mat-icon>
+			</button>
+
+			<div fxLayout="row" fxShow="false" fxShow.gt-sm>
+				<button mat-button [routerLink]="['/home']">
+					<mat-icon>home</mat-icon>
+				</button>
+				<button mat-button [routerLink]="['/member.list']">Gestión de Socios</button>
+				<button mat-button [routerLink]="['/sport.manager']">Gestión Deportiva</button>
+
+				<button mat-button [matMenuTriggerFor]="menu">Gestión Financiera</button>
+				<mat-menu #menu="matMenu" [overlapTrigger]="false">
+					<button mat-button [routerLink]="['/control.balance']">Registro de Aportes de Socios</button>
+					<button mat-button [routerLink]="['/control.payment']">Registro de Ingresos</button>
+					<button mat-button [routerLink]="['/control.balance']">Registro de Compras / Gastos</button>
+					<button mat-button [routerLink]="['/control.balance']">Consulta de Aporte Individual</button>
+					<button mat-button [routerLink]="['/control.balance']">Balance</button>
+				</mat-menu>
+
+				<span flex></span>
+				<button mat-button [routerLink]="['/home']">
+					<mat-icon>power_settings_new
+					</mat-icon>
+				</button>
+				<button mat-button (click)="logout()">
+					<mat-icon>settings</mat-icon>
+				</button>
+
+			</div>
+		</mat-toolbar>
 	</div>
-</nav>
-
-
+	<div class="jumbotron">
+			<div class="container">
+						<div class="col-sm-10 col-sm-offset-1">
+					<alert></alert>
+					<router-outlet></router-outlet>
+				</div>
+			</div>
+		</div>
+</mat-sidenav-container>

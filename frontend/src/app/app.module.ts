@@ -13,6 +13,7 @@ import { AlertComponent } from './directives/index';
 import { NavbarComponent } from './directives/index';
 import { SidebarComponent } from './directives/index';
 import {MediaMatcher} from '@angular/cdk/layout';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 
 
@@ -40,7 +41,10 @@ import { RegisterSponsorComponent } from './sponsor/index';
 import { RegisterIncomeComponent } from './control/index';
 import { RegisterExpenditureComponent } from './control/index';
 
-import { MatMenuModule, MatIconModule, MatButtonModule, MatSidenavModule, MatToolbarModule, MatListModule } from '@angular/material';
+import { MatMenuModule, MatIconModule, MatButtonModule, MatSidenavModule, MatToolbarModule, 
+  MatListModule, MatExpansionModule  } from '@angular/material';
+
+  import {MatFormFieldModule} from '@angular/material/form-field';
 
 import { CdkTableModule } from '@angular/cdk/table';
 import { OverlayModule } from '@angular/cdk/overlay';
@@ -55,7 +59,7 @@ import { OverlayModule } from '@angular/cdk/overlay';
     // Material
     MatMenuModule,
     MatButtonModule,
-    MatIconModule, MatSidenavModule, MatToolbarModule, MatListModule
+    MatIconModule, MatSidenavModule, MatToolbarModule, MatListModule, MatExpansionModule, MatFormFieldModule
   ]
 })
 
@@ -86,7 +90,9 @@ export class SharedMaterialModule  { }
     FormsModule,
     ReactiveFormsModule,
     SharedMaterialModule,
-    routing
+    routing,
+    
+    FlexLayoutModule
   ],
   providers: [
     AuthGuard,

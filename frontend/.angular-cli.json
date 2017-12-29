@@ -12,7 +12,7 @@
         "favicon.ico",
         "app.css",
         "style.css",
-        "deeppurple-amber.css"
+        "indigo-pink.css"
       ],
       "index": "index.html",
       "main": "main.ts",

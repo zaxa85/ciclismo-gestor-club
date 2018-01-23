@@ -12,7 +12,7 @@ import { routing } from './app.routing';
 import { AlertComponent } from './directives/index';
 import { NavbarComponent } from './directives/index';
 import { SidebarComponent } from './directives/index';
-import {MediaMatcher} from '@angular/cdk/layout';
+import { MediaMatcher } from '@angular/cdk/layout';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
 
@@ -40,11 +40,14 @@ import { RegisterPaymentComponent } from './control/index';
 import { RegisterSponsorComponent } from './sponsor/index';
 import { RegisterIncomeComponent } from './control/index';
 import { RegisterExpenditureComponent } from './control/index';
+import { IncomeListComponent } from './control/index';
+import { ExpenditureListComponent } from './control/index';
+import { PaymentListComponent } from './control/index';
 
-import { MatMenuModule, MatIconModule, MatButtonModule, MatSidenavModule, MatToolbarModule, 
-  MatListModule, MatExpansionModule  } from '@angular/material';
-
-  import {MatFormFieldModule} from '@angular/material/form-field';
+import {
+  MatMenuModule, MatIconModule, MatButtonModule, MatSidenavModule, MatToolbarModule,
+  MatListModule, MatExpansionModule, MatFormFieldModule
+} from '@angular/material';
 
 import { CdkTableModule } from '@angular/cdk/table';
 import { OverlayModule } from '@angular/cdk/overlay';
@@ -63,7 +66,7 @@ import { OverlayModule } from '@angular/cdk/overlay';
   ]
 })
 
-export class SharedMaterialModule  { }
+export class SharedMaterialModule { }
 
 
 @NgModule({
@@ -80,7 +83,7 @@ export class SharedMaterialModule  { }
     MemberListComponent,
     RegisterSponsorComponent,
     RegisterIncomeComponent,
-    RegisterExpenditureComponent,
+    RegisterExpenditureComponent,IncomeListComponent,  ExpenditureListComponent, PaymentListComponent,
     SidebarComponent
   ],
   imports: [
@@ -91,7 +94,6 @@ export class SharedMaterialModule  { }
     ReactiveFormsModule,
     SharedMaterialModule,
     routing,
-    
     FlexLayoutModule
   ],
   providers: [

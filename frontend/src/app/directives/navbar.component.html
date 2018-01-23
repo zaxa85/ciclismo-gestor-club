@@ -1,28 +1,27 @@
-<mat-sidenav-container fullscreen>
-	<mat-sidenav mode="over" #sidenav>
+<mat-sidenav-container>
+	<mat-sidenav #sidenav mode="over">
 
 		<div fxLayout="column" *ngIf=isLogged>
-			<mat-toolbar fxLayoutAlign="left left">
+			<mat-toolbar fxLayoutAlign="left center">
 				<button mat-button [routerLink]="['/home']" (click)="sidenav.open()">
 					<mat-icon>home</mat-icon>
 				</button>
 			</mat-toolbar>
+
 			<button mat-button [routerLink]="['/member.list']">Gestión de Socios</button>
 			<button mat-button [routerLink]="['/sport.manager']">Gestión Deportiva</button>
 			<button mat-button [routerLink]="['/control.payment']">Gestión Financiera</button>
+			<button mat-button [routerLink]="['/sponsor.list']">Gestión de Patrocinadores</button>
 
-
-			<div collapse class="card card-block card-header">
-
+			<div collapse>
 				<button mat-button [matMenuTriggerFor]="menu">Gestión Financiera</button>
 				<mat-menu #menu="matMenu" [overlapTrigger]="true">
-					<button mat-button [routerLink]="['/control.balance']">Registro de Aportes de Socios</button>
-					<button mat-button [routerLink]="['/control.payment']">Registro de Ingresos</button>
-					<button mat-button [routerLink]="['/control.balance']">Registro de Compras / Gastos</button>
-					<button mat-button [routerLink]="['/control.balance']">Consulta de Aporte Individual</button>
+					<button mat-button [routerLink]="['/control.payment']">Registro de Aportes de Socios</button>
+					<button mat-button [routerLink]="['/income.list']">Registro de Ingresos</button>
+					<button mat-button [routerLink]="['/expenditure.list']">Registro de Compras / Gastos</button>
+					<button mat-button [routerLink]="['/payment.list']">Consulta de Aporte Individual</button>
 					<button mat-button [routerLink]="['/control.balance']">Balance</button>
 				</mat-menu>
-
 			</div>
 
 			<button mat-button [routerLink]="['/home']">
@@ -33,13 +32,10 @@
 				<mat-icon>settings</mat-icon>
 			</button>
 		</div>
-
-		
 	</mat-sidenav>
 
 	<div *ngIf=isLogged>
 		<mat-toolbar>
-
 			<button mat-button (click)="sidenav.open()" fxHide="false" fxHide.gt-sm>
 				<mat-icon>menu</mat-icon>
 			</button>
@@ -50,13 +46,14 @@
 				</button>
 				<button mat-button [routerLink]="['/member.list']">Gestión de Socios</button>
 				<button mat-button [routerLink]="['/sport.manager']">Gestión Deportiva</button>
+				<button mat-button [routerLink]="['/sponsor.list']">Gestión de Patrocinadores</button>
 
 				<button mat-button [matMenuTriggerFor]="menu">Gestión Financiera</button>
 				<mat-menu #menu="matMenu" [overlapTrigger]="false">
-					<button mat-button [routerLink]="['/control.balance']">Registro de Aportes de Socios</button>
-					<button mat-button [routerLink]="['/control.payment']">Registro de Ingresos</button>
-					<button mat-button [routerLink]="['/control.balance']">Registro de Compras / Gastos</button>
-					<button mat-button [routerLink]="['/control.balance']">Consulta de Aporte Individual</button>
+					<button mat-button [routerLink]="['/control.payment']">Registro de Aportes de Socios</button>
+					<button mat-button [routerLink]="['/income.list']">Registro de Ingresos</button>
+					<button mat-button [routerLink]="['/expenditure.list']">Registro de Compras / Gastos</button>
+					<button mat-button [routerLink]="['/payment.list']">Consulta de Aporte Individual</button>
 					<button mat-button [routerLink]="['/control.balance']">Balance</button>
 				</mat-menu>
 
@@ -73,11 +70,23 @@
 		</mat-toolbar>
 	</div>
 	<div class="jumbotron">
-			<div class="container">
-						<div class="col-sm-10 col-sm-offset-1">
-					<alert></alert>
-					<router-outlet></router-outlet>
-				</div>
+		<div class="container">
+			<div class="col-sm-10 col-sm-offset-1">
+				<alert></alert>
+				<router-outlet></router-outlet>
 			</div>
 		</div>
+	</div>
 </mat-sidenav-container>
+
+<!--
+	<div class="jumbotron">
+		<div class="container">
+			<div class="col-sm-10 col-sm-offset-1">
+				<alert></alert>
+				<router-outlet></router-outlet>
+			</div>
+		</div>
+	</div>
+
+-->

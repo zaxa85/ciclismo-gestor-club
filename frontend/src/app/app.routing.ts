@@ -11,6 +11,10 @@ import { RegisterSponsorComponent } from './sponsor/index';
 import { RegisterPaymentComponent } from './control/index';
 import { RegisterIncomeComponent } from './control/index';
 import { RegisterExpenditureComponent } from './control/index';
+import { IncomeListComponent } from './control/index';
+import { ExpenditureListComponent } from './control/index';
+import { PaymentListComponent } from './control/index';
+
 import { AuthGuard } from './guards/index';
 
 const appRoutes: Routes = [
@@ -27,7 +31,11 @@ const appRoutes: Routes = [
     { path: 'member.list', component: MemberListComponent, canActivate: [AuthGuard] },
     { path: 'sponsor.register', component: RegisterSponsorComponent, canActivate: [AuthGuard] },
     { path: 'income.register', component: RegisterIncomeComponent, canActivate: [AuthGuard] },
+    { path: 'income.list', component: IncomeListComponent, canActivate: [AuthGuard] },
     { path: 'expenditure.register', component: RegisterExpenditureComponent, canActivate: [AuthGuard] },
+    { path: 'expenditure.list', component: ExpenditureListComponent, canActivate: [AuthGuard] },
+    { path: 'payment.list', component: PaymentListComponent, canActivate: [AuthGuard] },
+
     // otherwise redirect to home
     { path: '**', redirectTo: '' }
 ];

@@ -15,8 +15,6 @@ import { AlertService, AuthenticationService } from '../services/index';
 export class ControlPaymentComponent implements OnInit {
     //currentUser: User;
     model: any;
-    model2: any;
-    model3: any;
     statusFilter = '2016';
     
     constructor(
@@ -37,7 +35,5 @@ export class ControlPaymentComponent implements OnInit {
         
     onChange(year) {        
         this.paymentService.getByStatus(year).subscribe(members => { this.model = members; });
-        this.incomeService.getAll().subscribe(income => { this.model2 = income; });
-        this.expenditureService.getAll().subscribe(expenditure => { this.model3 = expenditure; });
     }
 }

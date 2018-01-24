@@ -26,4 +26,28 @@ export class IncomeListComponent {
     onChange(year) {
         this.incomeService.getAll().subscribe(income => { this.model = income; });
     }
+
+
+    definirEstado(param) {
+        if (param == 1) {
+            return "Activo"
+        } else {
+            return "Inactivo"    
+        }
+    }
+
+    definirTipo(param) {
+        if (param == 1) {
+            return "Auspicio"
+        }
+        else if (param == 2) {
+            return "Donación"
+        }
+        else if (param == 3) {
+            return "Ganancia"
+        } 
+        else {
+            return "Otro"    
+        }
+    }
 }

@@ -7,3 +7,4 @@ export * from './user.service';
 export * from './payment.service';
 export * from './expenditure.service';
 export * from './income.service';
+export * from './period.service';

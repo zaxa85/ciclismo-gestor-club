@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Subscription }from 'rxjs/Subscription';
-import { AlertService, ExpenditureService } from '../services/index';
+import { AlertService, ExpenditureService, PeriodService } from '../services/index';
 import { Expenditure } from '../models/index';
+import { Period } from '../models/index';
 import { DatePipe } from '@angular/common';
 
 @Component({
@@ -16,7 +17,9 @@ export class RegisterExpenditureComponent {
     private sub: Subscription;
     errorMessage: string;
     expenditure: Expenditure;
-    statuses = [{ id: 1, name: "Activo" }, { id: 2, name: "Suspendido" }, { id: 0, name: "Inactivo" }];
+    periods: Period[] = [];
+
+    statuses = [{ id: 1, name: "Activo" }, { id: 0, name: "Inactivo" }];
     types = [{ id: 1, name: "Gastos por tramites" }, 
                 { id: 2, name: "Gastos por transporte" }, 
                 { id: 3, name: "Gastos por inscripciones" }, 
@@ -29,6 +32,7 @@ export class RegisterExpenditureComponent {
         private route: ActivatedRoute,
         private router: Router,
         private expenditureService: ExpenditureService,
+        private periodService: PeriodService,
         private datePipe: DatePipe,
         private alertService: AlertService) { }
 
@@ -44,8 +48,7 @@ export class RegisterExpenditureComponent {
                 .subscribe(
                 data => {
                     this.alertService.success('Registro exitoso', true);
-                    //this.router.navigate(['/expenditure.list']);
-                    this.router.navigate(['/control.payment']);
+                    this.router.navigate(['/expenditure.list']);
                 },
                 error => {
                     this.alertService.error(error);
@@ -59,8 +62,7 @@ export class RegisterExpenditureComponent {
                 .subscribe(
                 data => {
                     this.alertService.success('Modificación exitosa', true);
-                    //this.router.navigate(['/expenditure.list']);
-                    this.router.navigate(['/control.payment']);
+                    this.router.navigate(['/expenditure.list']);
                 },
                 error => {
                     this.alertService.error(error);
@@ -71,6 +73,9 @@ export class RegisterExpenditureComponent {
 
     //Initializing screen values
     ngOnInit(): void {
+
+        //Load periods dropdown
+        this.periodService.getByStatus(1).subscribe(periods => { this.periods = periods; });
 
         //Initializing expenditure
         this.expenditure = new Expenditure();

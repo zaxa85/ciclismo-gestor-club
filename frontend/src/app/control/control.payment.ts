@@ -36,4 +36,14 @@ export class ControlPaymentComponent implements OnInit {
     onChange(year) {        
         this.paymentService.getByStatus(year).subscribe(members => { this.model = members; });
     }
+
+    setFormat(paymentStatus) {
+        if (paymentStatus == "1") {
+            return "btn btn-warning";
+        } else if (paymentStatus == "2") {
+            return "btn btn-default";
+        } else {
+            return "";
+        }
+    }
 }

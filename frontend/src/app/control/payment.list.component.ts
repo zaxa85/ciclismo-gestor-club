@@ -22,10 +22,19 @@ export class PaymentListComponent {
     ngOnInit() {
         this.onChange(this.statusFilter);
     }
-
-
         
     onChange(year) {        
         this.paymentService.getByMember(1, year).subscribe(payments => { this.model = payments; });
     }
+
+    definirEstado(param) {
+        if (param == 1) {
+            return "Enviado"
+        } else if (param == 2) {
+                return "Aprovado"
+        } else {
+            return "Inactivo"    
+        }
+    }
+
 }

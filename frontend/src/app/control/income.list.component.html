@@ -6,17 +6,19 @@
     <thead>
         <tr>
             <th style="width: 5%">#</th>
-            <th style="width: 25%">Nombres</th>
-            <th style="width: 20%">Fecha de inicio</th>
-
+            <th style="width: 25%">Tipo</th>
+            <th style="width: 20%">Descripción</th>
+            <th style="width: 25%">Monto</th>
+            <th style="width: 20%">Estado</th>
         </tr>
     </thead>
     <tbody>
         <tr *ngFor="let income of model">
             <td>{{income.id}}</td>
-            <td>{{income.type}} {{income.description}}</td>
-            <td>{{income.status}}</td>
-
+            <td>{{definirTipo(income.type)}} </td>
+            <td>{{income.description}}</td>
+            <td>{{income.amount}}</td>
+            <td>{{definirEstado(income.status)}}</td>
         </tr>
     </tbody>
 </table>

@@ -46,7 +46,7 @@ export class RegisterPaymentComponent {
 
         // If Member is NaN, this will follow member creation
         if (isNaN(this.payment.id)) {
-
+            this.payment.status = 1;
             this.paymentService.create(this.payment)
                 .subscribe(
                 data => {
@@ -100,7 +100,7 @@ export class RegisterPaymentComponent {
         
         //Initializing member
         this.payment = new Payment();
-        this.payment.status = 1;
+        this.payment.status = 0;
         this.payment.dateperform = new Date();
         this.payment.datecreated = new Date();
         

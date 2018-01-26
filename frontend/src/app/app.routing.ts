@@ -6,8 +6,8 @@ import { ControlBalanceComponent } from './control/index';
 import { ControlPaymentComponent } from './control/index';
 import { RegisterMemberComponent } from './member/index';
 import { MemberListComponent } from './member/index';
-
-import { RegisterSponsorComponent } from './sponsor/index';
+import { SponsorListComponent } from './sponsor/index';
+import { SponsorRegisterComponent } from './sponsor/index';
 import { RegisterPaymentComponent } from './control/index';
 import { RegisterIncomeComponent } from './control/index';
 import { RegisterExpenditureComponent } from './control/index';
@@ -33,7 +33,8 @@ const appRoutes: Routes = [
         canActivate: [ AuthGuard],
         component: RegisterMemberComponent},
     { path: 'member.list', component: MemberListComponent, canActivate: [AuthGuard] },
-    { path: 'sponsor.register', component: RegisterSponsorComponent, canActivate: [AuthGuard] },
+    { path: 'sponsor.list', component: SponsorListComponent, canActivate: [AuthGuard] },
+    { path: 'sponsor.register', component: SponsorRegisterComponent, canActivate: [AuthGuard] },
     { path: 'income.register', component: RegisterIncomeComponent, canActivate: [AuthGuard] },
         { path: 'income.register/:id', 
         canActivate: [ AuthGuard],

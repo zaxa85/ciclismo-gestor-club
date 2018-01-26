@@ -12,7 +12,7 @@ export class PaymentService {
     }
     // http://localhost:3000/api/member?filter={"where":{"status":0}}
 
-    getByStatus(year: string) {
+    getByPeriod(year: string) {
         return this.http.get('http://localhost:3000/api/v_payment_control', {
             search:
                 { filter: JSON.stringify({ "where": { period: year } }) }

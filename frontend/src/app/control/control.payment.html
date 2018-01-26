@@ -10,8 +10,7 @@
 			<td style="width: 10%">Aportes del Año:</td>
 			<td style="width: 20%">
 				<select class="form-control" [(ngModel)]="statusFilter" name=periodFilter (change)="onChange($event.target.value)">
-					<option value="2016">2016</option>
-					<option value="2017">2017</option>
+					<option *ngFor="let c of periods" [ngValue]="c.id">{{c.name}}</option>
 				</select>
 			</td>
 			<td style="width: 40%"></td>

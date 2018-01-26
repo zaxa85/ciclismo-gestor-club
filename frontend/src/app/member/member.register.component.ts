@@ -34,8 +34,6 @@ export class RegisterMemberComponent {
         // If Member is NaN, this will follow member creation
         if (isNaN(this.member.id)) {
 
-            alert(this.member.dob);
-
             this.memberService.create(this.member)
                 .subscribe(
                 data => {

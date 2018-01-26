@@ -45,11 +45,18 @@
 					<mat-icon>home</mat-icon>
 				</button>
 				<button mat-button [routerLink]="['/member.list']">Gestión de Socios</button>
-				<button mat-button [routerLink]="['/sport.manager']">Gestión Deportiva</button>
+
+				<button mat-button [matMenuTriggerFor]="mdeportiva">Gestión Deportiva</button>
+				<mat-menu #mdeportiva="matMenu" [overlapTrigger]="false">
+					<button mat-button [routerLink]="['/sport.manager']">Calendario de Eventos</button>
+					<button mat-button [routerLink]="['/sport.manager']">Gestor de Competencias </button>
+					<button mat-button [routerLink]="['/sport.manager']">Rendimiento del Equipo</button>
+				</mat-menu>
+
 				<button mat-button [routerLink]="['/sponsor.list']">Gestión de Patrocinadores</button>
 
-				<button mat-button [matMenuTriggerFor]="menu">Gestión Financiera</button>
-				<mat-menu #menu="matMenu" [overlapTrigger]="false">
+				<button mat-button [matMenuTriggerFor]="mfinanciera">Gestión Financiera</button>
+				<mat-menu #mfinanciera="matMenu" [overlapTrigger]="false">
 					<button mat-button [routerLink]="['/control.payment']">Registro de Aportes de Socios</button>
 					<button mat-button [routerLink]="['/income.list']">Registro de Ingresos</button>
 					<button mat-button [routerLink]="['/expenditure.list']">Registro de Compras / Gastos</button>

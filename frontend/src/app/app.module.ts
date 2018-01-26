@@ -38,7 +38,8 @@ import { ControlPaymentComponent } from './control/index';
 import { MemberListComponent } from './member/index';
 import { RegisterMemberComponent } from './member/index';
 import { RegisterPaymentComponent } from './control/index';
-import { RegisterSponsorComponent } from './sponsor/index';
+import { SponsorListComponent } from './sponsor/index';
+import { SponsorRegisterComponent } from './sponsor/index';
 import { RegisterIncomeComponent } from './control/index';
 import { RegisterExpenditureComponent } from './control/index';
 import { IncomeListComponent } from './control/index';
@@ -82,7 +83,8 @@ export class SharedMaterialModule { }
     RegisterMemberComponent,
     RegisterPaymentComponent,
     MemberListComponent,
-    RegisterSponsorComponent,
+    SponsorListComponent,
+    SponsorRegisterComponent,
     RegisterIncomeComponent,
     RegisterExpenditureComponent,IncomeListComponent,  ExpenditureListComponent, PaymentListComponent,
     SidebarComponent

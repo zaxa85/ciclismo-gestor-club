@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import { Period } from '../models/index';
 
-import { AlertService, AuthenticationService, PaymentService } from '../services/index';
+import { AlertService, AuthenticationService, PaymentService, PeriodService } from '../services/index';
 
 @Component({
     moduleId: module.id,
@@ -11,20 +12,24 @@ import { AlertService, AuthenticationService, PaymentService } from '../services
 export class PaymentListComponent {
     //currentUser: User;
     model: any;
-    statusFilter = '2016';
+    statusFilter = '0: 2016';
+    periods: Period[] = [];
 
     constructor(
         private paymentService: PaymentService,
+        private periodService: PeriodService,
+
     ) {
         //this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
     }
 
     ngOnInit() {
+        this.periodService.getByStatus(1).subscribe(periods => { this.periods = periods; });
         this.onChange(this.statusFilter);
     }
         
     onChange(year) {        
-        this.paymentService.getByMember(1, year).subscribe(payments => { this.model = payments; });
+        this.paymentService.getByMember(1, year.split(":")[1]).subscribe(payments => { this.model = payments; });
     }
 
     definirEstado(param) {

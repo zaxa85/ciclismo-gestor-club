@@ -9,7 +9,7 @@
       "outDir": "dist",
       "assets": [
         "assets",
-        "favicon.ico",
+        "logo.ico",
         "app.css",
         "style.css",
         "indigo-pink.css"

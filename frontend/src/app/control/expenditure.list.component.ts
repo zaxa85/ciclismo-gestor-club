@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import { Period } from '../models/index';
 
-import { AlertService, AuthenticationService, ExpenditureService } from '../services/index';
+import { AlertService, AuthenticationService, ExpenditureService, PeriodService } from '../services/index';
 
 @Component({
     moduleId: module.id,
@@ -11,21 +12,25 @@ import { AlertService, AuthenticationService, ExpenditureService } from '../serv
 export class ExpenditureListComponent {
     //currentUser: User;
     model: any;
-
-    statusFilter = '2016';
+    statusFilter = '0: 2016';
+    periods: Period[] = [];
 
     constructor(
         private expenditureService: ExpenditureService,
+        private periodService: PeriodService,
+
     ) {
         //this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
     }
     
     ngOnInit() {
+        //Load periods dropdown
+        this.periodService.getByStatus(1).subscribe(periods => { this.periods = periods; });
         this.onChange(this.statusFilter);
     }
 
     onChange(year) {
-        this.expenditureService.getAll().subscribe(expenditure => { this.model = expenditure; });
+        this.expenditureService.getByPeriod(year.split(":")[1]).subscribe(expenditure => { this.model = expenditure; });
     }
 
     definirEstado(param) {

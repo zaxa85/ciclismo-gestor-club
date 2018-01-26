@@ -10,7 +10,6 @@ export class MemberService {
     getAll() {
         return this.http.get('http://localhost:3000/api/member', this.jwt()).map((response: Response) => response.json());
     }
-    // http://localhost:3000/api/member?filter={"where":{"status":0}}
 
     getByStatus(status: number) {       
         return this.http.get('http://localhost:3000/api/member', {

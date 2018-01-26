@@ -10,13 +10,23 @@ export class IncomeService {
     getAll() {
         return this.http.get('http://localhost:3000/api/income', this.jwt()).map((response: Response) => response.json());
     }
-    // http://localhost:3000/api/income?filter={"where":{"status":0}}
 
     getByStatus(status: number) {       
         return this.http.get('http://localhost:3000/api/income', {
             search:
             { filter: JSON.stringify({"where": { status: status} })}
         }).map((response: Response) => response.json());
+    }
+
+    getByPeriod(period: string) {       
+        return this.http.get('http://localhost:3000/api/income', {
+            search:
+            { filter: JSON.stringify({"where": { id_fk_period_id: period } })}
+        }).map((response: Response) => response.json());
+    }
+
+    getIncomesPerPeriod(period: string) {  
+        return this.http.get('http://localhost:3000/api/income/getIncomesPerPeriod?period=' + period.trim() + '&status=1', this.jwt()).map((response: Response) => response.text());
     }
 
     getById(id: number) {

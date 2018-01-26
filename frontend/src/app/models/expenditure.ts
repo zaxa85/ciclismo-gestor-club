@@ -1,6 +1,7 @@
 export class Expenditure {
     
     id: number;
+    id_fk_period_id: number;
     description: string;
     status: number;
     type: number;

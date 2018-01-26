@@ -4,10 +4,12 @@
 	<table>
 		<tr>
 			<td style="width: 10%">Balance del Año:</td>
-			<td style="width: 20%"><select><option value="2016">2016</option>
-					<option value="2017">2017</option></select></td>
+			<td style="width: 20%">
+				<select class="form-control" [(ngModel)]="statusFilter" name=periodFilter (change)="onChange($event.target.value)">
+					<option *ngFor="let c of periods" [ngValue]="c.id">{{c.name}}</option>
+				</select>
+			</td>
 			<td style="width: 40%"></td>
-			
 		</tr>
 	</table>
 	<br>
@@ -46,12 +48,13 @@
 	
 	<h5>Aportes de los auspiciadores</h5>
 	<h5>Donaciones</h5>
-	
+	<h4>Total de ingresos</h4>
+
+		{{viewIncomessPerPeriod}}
+
 	<h4>Total de engresos</h4>
-	
-	<h5>Compras</h5>
-	<h5>Gastos</h5>
-	
+		{{viewExpendituresPerPeriod}}
+
 	
 	<h4>Resumen</h4>
 	

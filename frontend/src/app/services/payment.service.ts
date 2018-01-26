@@ -3,7 +3,7 @@ import { Http, Headers, RequestOptions, Response } from '@angular/http';
 
 import { Payment } from '../models/index';
 
-@Injectable() 
+@Injectable()
 export class PaymentService {
     constructor(private http: Http) { }
 
@@ -12,10 +12,17 @@ export class PaymentService {
     }
     // http://localhost:3000/api/member?filter={"where":{"status":0}}
 
-    getByStatus(year: string) {       
+    getByPeriod(year: string) {
         return this.http.get('http://localhost:3000/api/v_payment_control', {
             search:
-            { filter: JSON.stringify({"where": { period: year} })}
+                { filter: JSON.stringify({ "where": { period: year } }) }
+        }).map((response: Response) => response.json());
+    }
+
+    getByMember(member: number , year: string) {
+        return this.http.get('http://localhost:3000/api/payment', {
+            search:
+                { filter: JSON.stringify({ "where": { id_fk_member_id: member, id_fk_period_id: year } }) }
         }).map((response: Response) => response.json());
     }
 

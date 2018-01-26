@@ -59,6 +59,10 @@
     "dataSource": "Postgres",
     "public": true
   },
+  "period": {
+    "dataSource": "Postgres",
+    "public": true
+  },
   "v_payment_control": {
     "dataSource": "Postgres",
     "public": true

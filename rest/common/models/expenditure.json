@@ -10,6 +10,10 @@
     "id": {
       "type": "number",
       "required": true
+    },   
+     "id_fk_period_id": {
+      "type": "number",
+      "required": true
     },
     "description": {
       "type": "string"

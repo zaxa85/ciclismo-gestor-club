@@ -8,7 +8,12 @@
 	
 		<div class="form-group" [ngClass]="{ 'has-error': f.submitted }">
 			<input type="hidden" class="form-control" name="id" [(ngModel)]="expenditure.id" #id="ngModel" value="{{expenditure.id}}" />
-		</div>		
+		</div>	
+		<div class="form-group" [ngClass]="{ 'has-error': f.submitted  && !id_fk_period_id.valid}">
+			<label for="id_fk_period_id">Periodo</label> <select class="form-control" [(ngModel)]="expenditure.id_fk_period_id" name=id_fk_period_id #id_fk_period_id="ngModel" >
+				<option *ngFor="let c of periods" [ngValue]="c.id">{{c.name}}</option>
+			</select>
+		</div>	
 		<div class="form-group" [ngClass]="{ 'has-error': f.submitted  && !status.valid}">
 			<label for="status">Estado</label> <select class="form-control" [(ngModel)]="expenditure.status" name=status #status="ngModel" >
 				<option *ngFor="let c of statuses" [ngValue]="c.id">{{c.name}}</option>

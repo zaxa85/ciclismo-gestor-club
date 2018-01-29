@@ -12,6 +12,7 @@ export class NavbarComponent {
 
     isIn = false;   // store state
     isLogged = false;
+    userFullName = '';
 
     constructor(private router: Router) { }
 
@@ -23,6 +24,12 @@ export class NavbarComponent {
     ngDoCheck() {
         if (localStorage.getItem('currentUser')) {
             this.isLogged = true;
+
+            var temporal = localStorage.getItem('currentUser');
+            var loginUser = JSON.parse(localStorage.getItem('currentUser'));
+
+
+           this.userFullName = loginUser.username;
         }
     }
 

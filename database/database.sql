@@ -74,6 +74,16 @@ SELECT member.id as id, member.firstname as firstname, member.lastname as lastna
     payment.firstname,
     payment.lastname,
     payment.datestart,
+
+
+
+
+select * from v_payment_balance
+
+
+
+CREATE OR REPLACE VIEW public.v_payment_balance WITH (security_barrier=false) AS 
+ SELECT 
     payment.period,
     COALESCE(payment.jan, '#'::text) AS jan,
     COALESCE(payment.feb, '#'::text) AS feb,
@@ -124,6 +134,12 @@ SELECT member.id as id, member.firstname as firstname, member.lastname as lastna
    payment(id integer, firstname character varying, lastname character varying, datestart date, period character varying, 
    jan text, feb text, mar text, apr text, may text, jun text, jul text, aug text, sep text, oct text, nov text, "dec" text);
 
+SELECT period.name as period, month, 
+SUM( amount)
+   FROM payment, member, period 
+   WHERE member.id = payment.id_fk_member_id and period.id = payment.id_fk_period_id 
+	and payment.status = 2
+   group by period, month order by 1
 
 
 
@@ -196,6 +212,12 @@ SELECT member.id as id, member.firstname as firstname, member.lastname as lastna
 
 
 
+
+   CONCAT(payment.id, ''#'' , amount::text, ''#'' , dateperform::text, ''#'' , payment.status ) as amount
+   FROM payment, member, period 
+   WHERE member.id = payment.id_fk_member_id and period.id = payment.id_fk_period_id and payment.status = 2 order by 1'::text, 'SELECT generate_series(1,12)'::text) 
+   payment(id character varying, firstname character varying, lastname character varying, datestart date, period character varying, 
+   jan text, feb text, mar text, apr text, may text, jun text, jul text, aug text, sep text, oct text, nov text, "dec" text);
 
    
 

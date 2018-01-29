@@ -18,7 +18,8 @@ export class AuthenticationService {
                 let user = response.json();
                 if (user && user.count > 0) {
                     // store user details and jwt token in local storage to keep user logged in between page refreshes
-                    localStorage.setItem('currentUser', JSON.stringify(user));
+                    //localStorage.setItem('currentUser', JSON.stringify(user));
+                    localStorage.setItem('currentUser',  JSON.stringify({ username: username, password: password }));
                 }
                 else {
                     throw "Usuario o contraseña incorrecto";

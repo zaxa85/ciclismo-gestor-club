@@ -13,6 +13,7 @@ export class NavbarComponent {
     isIn = false;   // store state
     isLogged = false;
     userFullName = '';
+    userType = '';
 
     constructor(private router: Router) { }
 
@@ -30,6 +31,7 @@ export class NavbarComponent {
 
 
            this.userFullName = loginUser.username;
+           this.userType = 'Administrador';
         }
     }
 

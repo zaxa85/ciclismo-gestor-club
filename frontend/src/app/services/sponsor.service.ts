@@ -1,30 +1,30 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
 
-import { User } from '../models/index';
+import { Sponsor } from '../models/sponsor';
 
 @Injectable()
 export class SponsorService {
     constructor(private http: Http) { }
 
     getAll() {
-        return this.http.get('/api/users', this.jwt()).map((response: Response) => response.json());
+        return this.http.get('http://localhost:3000/api/sponsor', this.jwt()).map((response: Response) => response.json());
     }
 
     getById(id: number) {
-        return this.http.get('/api/users/' + id, this.jwt()).map((response: Response) => response.json());
+        return this.http.get('http://localhost:3000/api/sponsor/' + id, this.jwt()).map((response: Response) => response.json());
     }
 
-    create(user: User) {
-        return this.http.post('/api/users', user, this.jwt()).map((response: Response) => response.json());
+    create(sponsor: Sponsor) {
+        return this.http.post('http://localhost:3000/api/sponsor',sponsor, this.jwt()).map((response: Response) => response.json());
     }
 
-    update(user: User) {
-        return this.http.put('/api/users/' + user.id, user, this.jwt()).map((response: Response) => response.json());
+    update(sponsor: Sponsor) {
+        return this.http.put('http://localhost:3000/api/sponsor/' + sponsor.id, sponsor, this.jwt()).map((response: Response) => response.json());
     }
 
     delete(id: number) {
-        return this.http.delete('/api/users/' + id, this.jwt()).map((response: Response) => response.json());
+        return this.http.delete('http://localhost:3000/api/sponsor/' + id, this.jwt()).map((response: Response) => response.json());
     }
 
     // private helper methods

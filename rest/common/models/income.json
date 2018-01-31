@@ -26,10 +26,19 @@
     },
     "type": {
       "type": "number"
+    },
+    "id_fk_sponsor_id": {
+      "type": "number"
     }
   },
   "validations": [],
-  "relations": {},
+  "relations": {
+    "stories": {
+      "type": "hasMany",
+      "model": "sponsor",
+      "foreignKey": "id_fk_sponsor_id"
+    }
+  },
   "acls": [],
   "methods": {}
 }

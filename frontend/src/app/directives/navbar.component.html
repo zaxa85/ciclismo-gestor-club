@@ -63,21 +63,20 @@
 					<button mat-button [routerLink]="['/payment.list']">Consulta de Aporte Individual</button>
 					<button mat-button [routerLink]="['/control.balance']">Balance</button>
 				</mat-menu>
-
-				<span flex></span>
-
-
-				<button mat-button [routerLink]="['/home']">
-					User: {{userFullName}}
+			</div>
+			<span style="flex: 1 1 auto;"></span>
+			<div fxLayout="row" fxShow="false" fxShow.gt-sm>
+				<button  mat-button disabled>
+					User: {{userFullName}} &nbsp;
+					Tipo de Usuario: {{userType}}
 				</button>
-				<button mat-button [routerLink]="['/home']">
+				<button mat-button  (click)="logout()">
 					<mat-icon>power_settings_new
 					</mat-icon>
 				</button>
 				<button mat-button (click)="logout()">
 					<mat-icon>settings</mat-icon>
 				</button>
-
 			</div>
 		</mat-toolbar>
 	</div>
@@ -90,15 +89,3 @@
 		</div>
 	</div>
 </mat-sidenav-container>
-
-<!--
-	<div class="jumbotron">
-		<div class="container">
-			<div class="col-sm-10 col-sm-offset-1">
-				<alert></alert>
-				<router-outlet></router-outlet>
-			</div>
-		</div>
-	</div>
-
--->

@@ -26,9 +26,16 @@
     "status": {
       "type": "number"
     }
-  }, 
+  },
   "validations": [],
-  "relations": {},
+  "relations": {
+    "income": {
+      "type": "belongsTo",
+      "model": "income",
+      "foreignKey": "id",
+      "through": ""
+    }
+  },
   "acls": [],
   "methods": {}
 }

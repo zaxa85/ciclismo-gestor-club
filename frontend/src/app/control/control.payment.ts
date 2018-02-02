@@ -34,13 +34,9 @@ export class ControlPaymentComponent implements OnInit {
 
         this.onChange(this.statusFilter);
     }
-
-    private loadAllPayments(year : string) {
-        this.paymentService.getByPeriod(year.split(":")[1].trim()).subscribe(model => { this.model = model; });
-    }
         
     onChange(year) {        
-        this.paymentService.getByPeriod(year.split(":")[1].trim()).subscribe(model => { this.model = model; });
+        this.paymentService.getPaymentControlByPeriod(year.split(":")[1].trim()).subscribe(model => { this.model = model; });
     }
 
     setFormat(paymentStatus) {

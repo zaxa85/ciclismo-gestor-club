@@ -7,15 +7,17 @@ import { Payment } from '../models/index';
 export class PaymentService {
     constructor(private http: Http) { }
 
-    getAll() {
-        return this.http.get('http://localhost:3000/api/v_payment_control', this.jwt()).map((response: Response) => response.json());
-    }
-    // http://localhost:3000/api/member?filter={"where":{"status":0}}
-
-    getByPeriod(year: string) {
+    getPaymentControlByPeriod(year: string) {
         return this.http.get('http://localhost:3000/api/v_payment_control', {
             search:
                 { filter: JSON.stringify({ "where": { period: year } }) }
+        }).map((response: Response) => response.json());
+    }
+
+    getPaymentBalanceByPeriod(year: string) {
+        return this.http.get('http://localhost:3000/api/v_payment_balance', {
+            search:
+                { filter: JSON.stringify({ "where": { id: year } }) }
         }).map((response: Response) => response.json());
     }
 

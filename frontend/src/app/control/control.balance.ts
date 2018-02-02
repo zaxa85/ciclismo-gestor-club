@@ -17,7 +17,8 @@ export class ControlBalanceComponent implements OnInit {
     periods: Period[] = [];
     viewExpendituresPerPeriod = '';
     viewIncomessPerPeriod = '';
-    result: any;
+    //result: any;
+    paymentControl: any;
 
     constructor(
         private periodService: PeriodService,
@@ -37,11 +38,13 @@ export class ControlBalanceComponent implements OnInit {
 
     onChange(year) {
 
-        this.expenditureService.getExpendituresPerPeriod(year.split(":")[1]).subscribe(data => {
+        this.paymentService.getPaymentBalanceByPeriod(year.split(":")[1].trim()).subscribe(paymentControl => { this.paymentControl = paymentControl; });
+
+        this.expenditureService.getExpendituresPerPeriod(year.split(":")[1].trim()).subscribe(data => {
             this.viewExpendituresPerPeriod = data + ' Soles'
         });
 
-        this.incomeService.getIncomesPerPeriod(year.split(":")[1]).subscribe(data => {
+        this.incomeService.getIncomesPerPeriod(year.split(":")[1].trim()).subscribe(data => {
             this.viewIncomessPerPeriod = data + ' Soles'
         });
     }

@@ -213,14 +213,33 @@ SUM( amount)
 
 
 
-   CONCAT(payment.id, ''#'' , amount::text, ''#'' , dateperform::text, ''#'' , payment.status ) as amount
+
+CREATE OR REPLACE VIEW public.v_payment_balance WITH (security_barrier=false) AS 
+ SELECT payment.period as id,
+    payment.jan AS jan,    payment.feb AS feb,    payment.mar AS mar,    payment.apr AS apr,
+    payment.may AS may,    payment.jun AS jun,    payment.jul AS jul,    payment.aug AS aug,
+    payment.sep AS sep,    payment.oct AS oct,    payment.nov AS nov,    payment."dec" AS "dec"
+,(COALESCE(payment.jan,'0') ::numeric 
++COALESCE(payment.feb,'0') ::numeric 
++COALESCE(payment.mar,'0') ::numeric 
++COALESCE(payment.apr,'0') ::numeric 
++COALESCE(payment.may,'0') ::numeric
++COALESCE(payment.jun,'0') ::numeric 
++COALESCE(payment.jul,'0') ::numeric 
++COALESCE(payment.aug,'0') ::numeric 
++COALESCE(payment.sep,'0') ::numeric 
++COALESCE(payment.oct,'0') ::numeric 
++COALESCE(payment.nov,'0') ::numeric  
++COALESCE(payment.dec,'0') ::numeric ) as total
+
+   FROM crosstab('SELECT period.name as period, month, 
+SUM( amount)
    FROM payment, member, period 
-   WHERE member.id = payment.id_fk_member_id and period.id = payment.id_fk_period_id and payment.status = 2 order by 1'::text, 'SELECT generate_series(1,12)'::text) 
-   payment(id character varying, firstname character varying, lastname character varying, datestart date, period character varying, 
-   jan text, feb text, mar text, apr text, may text, jun text, jul text, aug text, sep text, oct text, nov text, "dec" text);
-
-   
-
+   WHERE member.id = payment.id_fk_member_id and period.id = payment.id_fk_period_id 
+	and payment.status = 2
+   group by period, month order by 1
+'::text, 'SELECT generate_series(1,12)'::text) payment(period character varying, jan text, feb text, mar text, apr text, may text, jun text, jul text, aug text, sep text, oct text, nov text, "dec" text);
 
 
-   
+
+drop view v_payment_balance

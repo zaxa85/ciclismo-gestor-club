@@ -70,5 +70,9 @@
   "v_payment_control": {
     "dataSource": "Postgres",
     "public": true
-  }
+  },
+  "v_payment_balance": {
+    "dataSource": "Postgres",
+    "public": true
+  }  
 }

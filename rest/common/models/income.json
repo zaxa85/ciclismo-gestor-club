@@ -33,10 +33,11 @@
   },
   "validations": [],
   "relations": {
-    "stories": {
-      "type": "hasMany",
+    "sponsor": {
+      "type": "belongsTo",
       "model": "sponsor",
-      "foreignKey": "id_fk_sponsor_id"
+      "foreignKey": "id_fk_sponsor_id",
+      "through": ""
     }
   },
   "acls": [],

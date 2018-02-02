@@ -28,9 +28,10 @@ module.exports = function(Income) {
   Income.remoteMethod('getIncomesPerPeriod', {
     http: {path: '/getIncomesPerPeriod', verb: 'get'},
     accepts: [
-              {arg: 'period', type: 'string'},
-              {arg: 'status', type: 'string'},
+      {arg: 'period', type: 'string'},
+      {arg: 'status', type: 'string'},
     ],
     returns: {type: 'object', root: true},
   });
+
 };

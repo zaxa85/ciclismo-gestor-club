@@ -26,7 +26,7 @@ export class ExpenditureService {
     }
 
     getExpendituresPerPeriod(period: string) {  
-        return this.http.get('http://localhost:3000/api/expenditure/getExpendituresPerPeriod?period=' + period.trim() + '&status=1', this.jwt()).map((response: Response) => response.text());
+        return this.http.get('http://localhost:3000/api/expenditure/getExpendituresPerPeriod?period=' + period + '&status=1', this.jwt()).map((response: Response) => response.text());
     }
 
     getById(id: number) {

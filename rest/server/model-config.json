@@ -74,5 +74,13 @@
   "v_payment_balance": {
     "dataSource": "Postgres",
     "public": true
+  },
+  "v_expenditure_by_type": {
+    "dataSource": "Postgres",
+    "public": true
+  },
+  "v_income_by_type": {
+    "dataSource": "Postgres",
+    "public": true
   }  
 }

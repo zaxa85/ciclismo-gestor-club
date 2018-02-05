@@ -20,9 +20,10 @@
             <td>{{sponsor.id}}</td>
             <td>{{sponsor.name}} </td>
             <td>{{sponsor.realname}} </td>
-            <td>{{sponsor.documenttype}}</td>
+            <td>{{definirTipoDocumento(sponsor.documenttype)}}</td>
             <td>{{sponsor.document}}</td>
             <td>{{definirEstado(sponsor.status)}}</td>
+            <td><a [routerLink]="['/sponsor.register', sponsor.id]">Modificar</a></td>
         </tr>
     </tbody>
 </table>

@@ -98,12 +98,4 @@ export class RegisterIncomeComponent {
     ngOnDestroy() {
         this.sub.unsubscribe();
     }
-
-    private dateChanged1(newDate) {
-   //     this.income.dob = newDate;
-    }
-
-    private dateChanged2(newDate) {
-   //     this.income.datestart = newDate;
-    }
 }

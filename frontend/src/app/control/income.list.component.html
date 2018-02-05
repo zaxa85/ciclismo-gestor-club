@@ -32,6 +32,7 @@
             <td>{{income.description}}</td>
             <td>{{income.amount}}</td>
             <td>{{definirEstado(income.status)}}</td>
+            <td><a [routerLink]="['/income.register', income.id]">Modificar</a></td>
         </tr>
     </tbody>
 </table>

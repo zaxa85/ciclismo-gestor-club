@@ -21,7 +21,21 @@ export class PaymentService {
         }).map((response: Response) => response.json());
     }
 
-    getByMember(member: number , year: string) {
+    geIncomeByType(year: string) {
+        return this.http.get('http://localhost:3000/api/v_income_by_type', {
+            search:
+                { filter: JSON.stringify({ "where": { id_fk_period_id: year } }) }
+        }).map((response: Response) => response.json());
+    }
+
+    geExpenditureByType(year: string) {
+        return this.http.get('http://localhost:3000/api/v_expenditure_by_type', {
+            search:
+                { filter: JSON.stringify({ "where": { id_fk_period_id: year } }) }
+        }).map((response: Response) => response.json());
+    }
+
+    getByMember(member: number, year: string) {
         return this.http.get('http://localhost:3000/api/payment', {
             search:
                 { filter: JSON.stringify({ "where": { id_fk_member_id: member, id_fk_period_id: year } }) }

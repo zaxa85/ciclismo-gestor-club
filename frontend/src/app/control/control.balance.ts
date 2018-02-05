@@ -19,6 +19,8 @@ export class ControlBalanceComponent implements OnInit {
     viewIncomessPerPeriod = '';
     //result: any;
     paymentControl: any;
+    incomesByType: any;
+    expendituresByType: any;
 
     constructor(
         private periodService: PeriodService,
@@ -39,6 +41,8 @@ export class ControlBalanceComponent implements OnInit {
     onChange(year) {
 
         this.paymentService.getPaymentBalanceByPeriod(year.split(":")[1].trim()).subscribe(paymentControl => { this.paymentControl = paymentControl; });
+        this.paymentService.geIncomeByType(year.split(":")[1].trim()).subscribe(incomesByType => { this.incomesByType = incomesByType; });
+        this.paymentService.geExpenditureByType(year.split(":")[1].trim()).subscribe(expendituresByType => { this.expendituresByType = expendituresByType; });
 
         this.expenditureService.getExpendituresPerPeriod(year.split(":")[1].trim()).subscribe(data => {
             this.viewExpendituresPerPeriod = data + ' Soles'
@@ -47,6 +51,42 @@ export class ControlBalanceComponent implements OnInit {
         this.incomeService.getIncomesPerPeriod(year.split(":")[1].trim()).subscribe(data => {
             this.viewIncomessPerPeriod = data + ' Soles'
         });
+    }
+
+    definirTipoIngresos(param) {
+        if (param == 1) {
+            return "Auspicio"
+        }
+        else if (param == 2) {
+            return "Donación"
+        }
+        else if (param == 3) {
+            return "Ganancia"
+        } 
+        else {
+            return "Otro"    
+        }
+    }
+
+    definirTipoGastos(param) {
+        if (param == 1) {
+            return "Gastos por tramites"
+        }
+        else if (param == 2) {
+            return "Gastos por transporte"
+        }
+        else if (param == 3) {
+            return "Gastos por inscripciones"
+        } 
+        else if (param == 4) {
+            return "Gastos por reuniones"
+        } 
+        else if (param == 5) {
+            return "Gastos de competencia"
+        } 
+        else {
+            return "Otros gastos"    
+        }
     }
 }
 

@@ -29,22 +29,32 @@ export class SponsorListComponent {
         private alertService: AlertService) { }
 
     ngOnInit() {
-            //Load periods dropdown
-           // this.periodService.getByStatus(1).subscribe(periods => { this.periods = periods; });
-            this.onChange(1);
-        }
-    
-        onChange(status) {
-            this.sponsorService.getAll().subscribe(sponsor => { this.model = sponsor; });
-        }
+        //Load periods dropdown
+        // this.periodService.getByStatus(1).subscribe(periods => { this.periods = periods; });
+        this.onChange(1);
+    }
+
+    onChange(status) {
+        this.sponsorService.getAll().subscribe(sponsor => { this.model = sponsor; });
+    }
 
     definirEstado(param) {
         if (param == 1) {
             return "Activo"
         } else {
-            return "Inactivo"    
+            return "Inactivo"
         }
     }
 
+    definirTipoDocumento(param) {
+        if (param == 1) {
+            return "RUC"
+        }
+        else if (param == 2) {
+            return "DNI"
 
+        } else {
+            return "Otro"
+        }
+    }
 }

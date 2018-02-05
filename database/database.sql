@@ -243,3 +243,36 @@ SUM( amount)
 
 
 drop view v_payment_balance
+
+
+
+
+CREATE OR REPLACE VIEW public.v_income_by_type WITH (security_barrier=false) AS 
+ SELECT id_fk_period_id, type, sum(amount) as amount from income where status = 1 and id_fk_period_id = 2016 group by id_fk_period_id, type
+
+ SELECT type, sum(amount) as amount from income group by type
+
+ SELECT * from income group by type
+
+
+CREATE OR REPLACE VIEW public.v_expenditure_by_type WITH (security_barrier=false) AS 
+ SELECT id_fk_period_id, type, sum(amount) as amount from expenditure where status = 1 group by id_fk_period_id, type
+
+drop view v_income_by_type
+drop view v_expenditure_by_type
+
+
+select key, value from parameter where extra = 'month' and key NOT IN 
+(select payment.month :: character varing from payment where payment.id_fk_period_id = 2016 and payment.id_fk_member_id = 1 and payment.month IS NOT NULL)
+
+
+
+
+
+
+
+
+
+
+
+

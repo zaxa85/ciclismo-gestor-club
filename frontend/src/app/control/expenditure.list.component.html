@@ -32,6 +32,7 @@
             <td>{{expenditure.description}}</td>
             <td>{{expenditure.amount}}</td>
             <td>{{definirEstado(expenditure.status)}}</td>
+            <td><a [routerLink]="['/expenditure.register', expenditure.id]">Modificar</a></td>
         </tr>
     </tbody>
 </table>

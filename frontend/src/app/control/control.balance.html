@@ -79,17 +79,57 @@
 		</tbody>
 	</table>
 
-	<h5>Aportes de los auspiciadores</h5>
-	<h5>Donaciones</h5>
-	<h4>Total de ingresos</h4>
+	<h5>Ingresos por tipo</h5>
+	<table class="table table-sm">
+		<thead>
+			<tr>
+				<th style="width: 6%">Tipo de ingreso</th>
+				<th style="width: 6%">Total</th>
 
-	{{viewIncomessPerPeriod}}
+			</tr>
+		</thead>
+		<tbody>
+			<tr *ngFor="let payment of incomesByType">
+				<td>
+					{{definirTipoIngresos(payment.type)}}
+				</td>
+				<td>
+					{{payment.amount}}
+				</td>
 
-	<h4>Total de engresos</h4>
-	{{viewExpendituresPerPeriod}}
+			</tr>
+		</tbody>
+	</table>
+	<h4>Total de ingresos: {{viewIncomessPerPeriod}}</h4>
+	<br>
+
+	
+
+	<h5>Gastos por tipo</h5>
+	<table class="table table-sm">
+		<thead>
+			<tr>
+				<th style="width: 6%">Tipo de ingreso</th>
+				<th style="width: 6%">Total</th>
+
+			</tr>
+		</thead>
+		<tbody>
+			<tr *ngFor="let payment of expendituresByType">
+				<td>
+					{{definirTipoGastos(payment.type)}}
+				</td>
+				<td>
+					{{payment.amount}}
+				</td>
+
+			</tr>
+		</tbody>
+	</table>
+	<h4>Total de gastos: {{viewExpendituresPerPeriod}}</h4>
+	
 
 
 	<h4>Resumen</h4>
 
-	Total de Ingresos Total de Egresos Balance general
 </div>

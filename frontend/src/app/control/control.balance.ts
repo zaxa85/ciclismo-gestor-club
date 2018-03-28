@@ -9,14 +9,13 @@ import { AlertService, AuthenticationService, PeriodService, PaymentService, Inc
     templateUrl: 'control.balance.html'
 })
 
-
-
 export class ControlBalanceComponent implements OnInit {
     //currentUser: User;
     statusFilter = '0: 2016';
     periods: Period[] = [];
-    viewExpendituresPerPeriod = '';
-    viewIncomessPerPeriod = '';
+    viewIncomesByMembers = 0;
+    viewExpendituresPerPeriod = 0;
+    viewIncomessPerPeriod = 0;
     //result: any;
     paymentControl: any;
     incomesByType: any;
@@ -44,13 +43,28 @@ export class ControlBalanceComponent implements OnInit {
         this.paymentService.geIncomeByType(year.split(":")[1].trim()).subscribe(incomesByType => { this.incomesByType = incomesByType; });
         this.paymentService.geExpenditureByType(year.split(":")[1].trim()).subscribe(expendituresByType => { this.expendituresByType = expendituresByType; });
 
+
+
         this.expenditureService.getExpendituresPerPeriod(year.split(":")[1].trim()).subscribe(data => {
-            this.viewExpendituresPerPeriod = data + ' Soles'
+            this.viewExpendituresPerPeriod = parseFloat(data);
         });
 
         this.incomeService.getIncomesPerPeriod(year.split(":")[1].trim()).subscribe(data => {
-            this.viewIncomessPerPeriod = data + ' Soles'
+            this.viewIncomessPerPeriod = parseFloat(data);
         });
+
+    }
+
+    getPaymentBalanceByPeriodTotals(data) {
+        let total = 0;
+
+        if (data != undefined || data != null) {
+            data.forEach((d) => {
+                total += parseFloat(d.total);
+              });
+
+        }    
+        return total;
     }
 
     definirTipoIngresos(param) {
@@ -88,20 +102,4 @@ export class ControlBalanceComponent implements OnInit {
             return "Otros gastos"    
         }
     }
-}
-
-
-
-export class Modelo1 {
-    //expendituresPerPeriod: number;    
-    constructor(
-        public expendituresPerPeriod: string
-
-    ) { }
-}
-export class Modelo2 {
-    //incomesPerPeriod: number;    
-    constructor(
-        public incomesPerPeriod: number,
-    ) { }
 }

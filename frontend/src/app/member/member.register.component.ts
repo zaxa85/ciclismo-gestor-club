@@ -18,6 +18,7 @@ export class RegisterMemberComponent {
     member: Member;
     statuses = [{ id: 1, name: "Activo" }, { id: 2, name: "Suspendido" }, { id: 0, name: "Inactivo" }];
     test: string;
+    public files: any[];
 
     constructor(
         private route: ActivatedRoute,
@@ -25,6 +26,23 @@ export class RegisterMemberComponent {
         private memberService: MemberService,
         private datePipe: DatePipe,
         private alertService: AlertService) { }
+
+        onFileChanged(event: any) {
+            this.files = event.target.files;
+          }
+          
+          onUpload() {
+            const formData = new FormData();
+            for (const file of this.files) {
+                formData.append(name, file, file.name);
+
+                alert (formData);
+            }
+
+                alert('onUpload')
+
+             //this.http.post('url', formData).subscribe(x => ....);
+          }
 
     // Main process
     register() {
@@ -67,7 +85,7 @@ export class RegisterMemberComponent {
         //Initializing member
         this.member = new Member();
         this.member.status = 1;
-
+        this.member.photoname = "";
         this.member.datestart = new Date();//this.datePipe.transform(new Date(), 'yyyy-MM-dd');
         this.member.dob = new Date(); //this.datePipe.transform(new Date(), 'yyyy-MM-dd');
 

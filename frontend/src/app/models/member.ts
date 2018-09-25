@@ -6,7 +6,29 @@ export class Member {
     dob: Date;
     datestart: Date;
     status: number;
-    
+    photofile: File;
+    photoname: string;
+
+    //Aditional information
+    /*
+        - direccion
+        - foto
+
+    */
+
+
+
+    //Extra information
+    /*
+        - FTP
+        - Umbral FC
+        - Peso
+        - Kilometros por semana
+        - Categoria actual
+
+    */
+
+
     constructor(
     ) { }
     /*

@@ -9,7 +9,7 @@ export class AuthenticationService {
 
     login(username: string, password: string) {
 
-        return this.http.get('http://localhost:3000/api/users2/count', {
+        return this.http.get('http://192.168.1.132:3000/api/users2/count', {
             search:
             { where: JSON.stringify({ username: username, password: password }) }
         })

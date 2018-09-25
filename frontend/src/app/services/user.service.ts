@@ -8,7 +8,7 @@ export class UserService {
     constructor(private http: Http) { }
 
     getAll() {
-        return this.http.get('http://localhost:3000/api/user2', this.jwt()).map((response: Response) => response.json());
+        return this.http.get('http://192.168.1.132:3000/api/user2', this.jwt()).map((response: Response) => response.json());
     }
 
     getById(id: number) {

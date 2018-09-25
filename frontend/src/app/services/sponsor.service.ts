@@ -8,23 +8,23 @@ export class SponsorService {
     constructor(private http: Http) { }
 
     getAll() {
-        return this.http.get('http://localhost:3000/api/sponsor', this.jwt()).map((response: Response) => response.json());
+        return this.http.get('http://192.168.1.132:3000/api/sponsor', this.jwt()).map((response: Response) => response.json());
     }
 
     getById(id: number) {
-        return this.http.get('http://localhost:3000/api/sponsor/' + id, this.jwt()).map((response: Response) => response.json());
+        return this.http.get('http://192.168.1.132:3000/api/sponsor/' + id, this.jwt()).map((response: Response) => response.json());
     }
 
     create(sponsor: Sponsor) {
-        return this.http.post('http://localhost:3000/api/sponsor',sponsor, this.jwt()).map((response: Response) => response.json());
+        return this.http.post('http://192.168.1.132:3000/api/sponsor',sponsor, this.jwt()).map((response: Response) => response.json());
     }
 
     update(sponsor: Sponsor) {
-        return this.http.put('http://localhost:3000/api/sponsor/' + sponsor.id, sponsor, this.jwt()).map((response: Response) => response.json());
+        return this.http.put('http://192.168.1.132:3000/api/sponsor/' + sponsor.id, sponsor, this.jwt()).map((response: Response) => response.json());
     }
 
     delete(id: number) {
-        return this.http.delete('http://localhost:3000/api/sponsor/' + id, this.jwt()).map((response: Response) => response.json());
+        return this.http.delete('http://192.168.1.132:3000/api/sponsor/' + id, this.jwt()).map((response: Response) => response.json());
     }
 
     // private helper methods

@@ -3,19 +3,35 @@
 
 		<div fxLayout="column" *ngIf=isLogged>
 			<mat-toolbar fxLayoutAlign="left center">
+
+				<span>Socios de Ciclismo</span>
+
 				<button mat-button [routerLink]="['/home']" (click)="sidenav.open()">
 					<mat-icon>home</mat-icon>
 				</button>
+
+
 			</mat-toolbar>
 
-			<button mat-button [routerLink]="['/member.list']">Gestión de Socios</button>
-			<button mat-button [routerLink]="['/sport.manager']">Gestión Deportiva</button>
-			<button mat-button [routerLink]="['/control.payment']">Gestión Financiera</button>
-			<button mat-button [routerLink]="['/sponsor.list']">Gestión de Patrocinadores</button>
+			<div collapse>
+				<button mat-button [routerLink]="['/member.list']">Gestión de Socios</button>
+			</div>
 
 			<div collapse>
-				<button mat-button [matMenuTriggerFor]="menu">Gestión Financiera</button>
-				<mat-menu #menu="matMenu" [overlapTrigger]="true">
+				<button mat-button [matMenuTriggerFor]="mdeportiva">Gestión Deportiva</button>
+				<mat-menu #mdeportiva="matMenu" [overlapTrigger]="false">
+					<button mat-button [routerLink]="['/sport.list']">Calendario de Eventos</button>
+					<button mat-button [routerLink]="['/sport.event']">Gestor de Competencias </button>
+					<button mat-button [routerLink]="['/sport.team']">Rendimiento del Equipo</button>
+				</mat-menu>
+			</div>
+
+			<div collapse>
+				<button mat-button [routerLink]="['/sponsor.list']">Gestión de Patrocinadores</button>
+			</div>
+			<div collapse>
+				<button mat-button [matMenuTriggerFor]="mfinanciera">Gestión Financiera</button>
+				<mat-menu #mfinanciera="matMenu" [overlapTrigger]="false">
 					<button mat-button [routerLink]="['/control.payment']">Registro de Aportes de Socios</button>
 					<button mat-button [routerLink]="['/income.list']">Registro de Ingresos</button>
 					<button mat-button [routerLink]="['/expenditure.list']">Registro de Compras / Gastos</button>
@@ -23,8 +39,11 @@
 					<button mat-button [routerLink]="['/control.balance']">Balance</button>
 				</mat-menu>
 			</div>
-
-			<button mat-button [routerLink]="['/home']">
+			<br>
+			<br>
+			<br>
+			<br>
+			<button mat-button (click)="logout()">
 				<mat-icon>power_settings_new
 				</mat-icon>
 			</button>
@@ -36,21 +55,26 @@
 
 	<div *ngIf=isLogged>
 		<mat-toolbar>
+
 			<button mat-button (click)="sidenav.open()" fxHide="false" fxHide.gt-sm>
 				<mat-icon>menu</mat-icon>
 			</button>
+			<span>Socios de Ciclismo</span>
 
 			<div fxLayout="row" fxShow="false" fxShow.gt-sm>
-				<button mat-button [routerLink]="['/home']">
+
+				<button mat-button [routerLink]="['/home']" (click)="sidenav.open()">
 					<mat-icon>home</mat-icon>
 				</button>
+
+
 				<button mat-button [routerLink]="['/member.list']">Gestión de Socios</button>
 
 				<button mat-button [matMenuTriggerFor]="mdeportiva">Gestión Deportiva</button>
 				<mat-menu #mdeportiva="matMenu" [overlapTrigger]="false">
-					<button mat-button [routerLink]="['/sport.manager']">Calendario de Eventos</button>
-					<button mat-button [routerLink]="['/sport.manager']">Gestor de Competencias </button>
-					<button mat-button [routerLink]="['/sport.manager']">Rendimiento del Equipo</button>
+					<button mat-button [routerLink]="['/sport.list']">Calendario de Eventos</button>
+					<button mat-button [routerLink]="['/sport.event']">Gestor de Eventos </button>
+					<button mat-button [routerLink]="['/sport.team']">Rendimiento del Equipo</button>
 				</mat-menu>
 
 				<button mat-button [routerLink]="['/sponsor.list']">Gestión de Patrocinadores</button>
@@ -66,11 +90,11 @@
 			</div>
 			<span style="flex: 1 1 auto;"></span>
 			<div fxLayout="row" fxShow="false" fxShow.gt-sm>
-				<button  mat-button disabled>
+				<button mat-button disabled>
 					User: {{userFullName}} &nbsp;
 					Tipo de Usuario: {{userType}}
 				</button>
-				<button mat-button  (click)="logout()">
+				<button mat-button (click)="logout()">
 					<mat-icon>power_settings_new
 					</mat-icon>
 				</button>

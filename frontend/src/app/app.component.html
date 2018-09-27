@@ -1,7 +1,13 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align: center">
-	<h1>Bienvenidos al {{title}}!</h1>
-	<img alt="test" src="../../assets/logo.jpg" height="120" width="130"/>
+
+
+<div *ngIf=showHeader>
+
+	<div style="text-align: center">
+		<h1>Bienvenidos al {{title}}!</h1>
+		<img alt="test" src="../../assets/logo.jpg" height="120" width="130"/>
+	</div>
+
 </div>
 
 <!-- main app container  -->

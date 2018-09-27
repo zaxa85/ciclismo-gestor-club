@@ -6,7 +6,8 @@ export class Member {
     dob: Date;
     datestart: Date;
     status: number;
-    photofile: File;
+    photofile: string;
+    phototype: string;
     photoname: string;
 
     //Aditional information

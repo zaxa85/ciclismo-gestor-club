@@ -14,6 +14,9 @@ import { RegisterExpenditureComponent } from './control/index';
 import { IncomeListComponent } from './control/index';
 import { ExpenditureListComponent } from './control/index';
 import { PaymentListComponent } from './control/index';
+import { SportListComponent } from './sport/index';
+import { SportEventComponent } from './sport/index';
+import { SportTeamComponent } from './sport/index';
 
 import { AuthGuard } from './guards/index';
 
@@ -48,6 +51,10 @@ const appRoutes: Routes = [
         component: RegisterExpenditureComponent},
     { path: 'expenditure.list', component: ExpenditureListComponent, canActivate: [AuthGuard] },
     { path: 'payment.list', component: PaymentListComponent, canActivate: [AuthGuard] },
+
+    { path: 'sport.list', component: SportListComponent, canActivate: [AuthGuard] },
+    { path: 'sport.event', component: SportEventComponent, canActivate: [AuthGuard] },
+    { path: 'sport.team', component: SportTeamComponent, canActivate: [AuthGuard] },
 
     // otherwise redirect to home
     { path: '**', redirectTo: '' }

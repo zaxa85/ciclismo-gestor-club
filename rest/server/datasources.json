@@ -8,10 +8,16 @@
     "port": 5432,
     "url": "",
     "database": "ciclismo-club",
-
     "password": "is22alvet",
     "name": "Postgres",
     "user": "postgres",
     "connector": "postgresql"
+  },
+  "storage": {
+    "name": "storage",
+    "connector": "loopback-component-storage",
+    "provider": "filesystem",
+    "root": "C:\\Users\\Pablo Sierralta\\development\\ciclismo-gestor-club\\storage",
+    "nameConflict": "makeUnique"
   }
 }

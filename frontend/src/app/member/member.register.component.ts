@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { Subscription }from 'rxjs/Subscription';
+import { Subscription } from 'rxjs/Subscription';
 import { AlertService, MemberService } from '../services/index';
 import { Member } from '../models/index';
 import { DatePipe } from '@angular/common';
@@ -8,6 +8,11 @@ import { DatePipe } from '@angular/common';
 @Component({
     moduleId: module.id,
     templateUrl: 'member.register.component.html',
+    styles: [`
+    .preview img{
+      max-height: 50px;
+    }
+  `],
     providers: [DatePipe]
 })
 
@@ -27,22 +32,35 @@ export class RegisterMemberComponent {
         private datePipe: DatePipe,
         private alertService: AlertService) { }
 
-        onFileChanged(event: any) {
-            this.files = event.target.files;
-          }
-          
-          onUpload() {
-            const formData = new FormData();
-            for (const file of this.files) {
-                formData.append(name, file, file.name);
 
-                alert (formData);
-            }
 
-                alert('onUpload')
+    onFileChanged(event) {
 
-             //this.http.post('url', formData).subscribe(x => ....);
-          }
+        this.files = event.target.files;
+
+        const formData = new FormData();
+        for (const file of this.files) {
+            formData.append(name, file, file.name);
+
+            this.member.photoname = file.name,
+            this.member.phototype= file.type,
+            this.member.photofile = file;
+        }
+
+    }
+
+    onUpload() {
+        const formData = new FormData();
+        for (const file of this.files) {
+            formData.append(name, file, file.name);
+
+            alert(formData);
+        }
+
+        alert('onUpload')
+
+        //this.http.post('url', formData).subscribe(x => ....);
+    }
 
     // Main process
     register() {
@@ -54,28 +72,28 @@ export class RegisterMemberComponent {
 
             this.memberService.create(this.member)
                 .subscribe(
-                data => {
-                    this.alertService.success('Registro exitoso', true);
-                    this.router.navigate(['/member.list']);
-                },
-                error => {
-                    this.alertService.error(error);
-                    this.loading = false;
-                });
+                    data => {
+                        this.alertService.success('Registro exitoso', true);
+                        this.router.navigate(['/member.list']);
+                    },
+                    error => {
+                        this.alertService.error(error);
+                        this.loading = false;
+                    });
 
         }
         else {
 
             this.memberService.update(this.member)
                 .subscribe(
-                data => {
-                    this.alertService.success('Modificación exitosa', true);
-                    this.router.navigate(['/member.list']);
-                },
-                error => {
-                    this.alertService.error(error);
-                    this.loading = false;
-                });
+                    data => {
+                        this.alertService.success('Modificación exitosa', true);
+                        this.router.navigate(['/member.list']);
+                    },
+                    error => {
+                        this.alertService.error(error);
+                        this.loading = false;
+                    });
         }
     }
 
@@ -92,13 +110,15 @@ export class RegisterMemberComponent {
         //Loading member if it exists
         this.sub = this.route.params
             .subscribe(
-            params => {
-                let id = +params['id'];
-                if (!isNaN(id)) {
-                    this.getMember(id);
-                }
-            });
+                params => {
+                    let id = +params['id'];
+                    if (!isNaN(id)) {
+                        this.getMember(id);
 
+                    }
+                });
+                
+        var img = document.querySelector("#preview img");
     }
 
     getMember(id: number) {

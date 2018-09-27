@@ -25,6 +25,15 @@
     },
     "status": {
       "type": "number"
+    },
+    "photoname": {
+      "type": "string"
+    },
+    "phototype": {
+      "type": "string"
+    },
+    "photofile": {
+      "type": "string"
     }
   },
   "validations": [],

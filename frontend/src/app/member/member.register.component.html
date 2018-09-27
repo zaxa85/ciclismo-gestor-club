@@ -34,11 +34,23 @@
 			<div *ngIf="f.submitted && !datestart.valid" class="help-block">La Fecha de inicio de requerido</div>
 		</div>
 
-		<div class="form-group" [ngClass]="{ 'has-error': f.submitted && !fileInput.valid}">
+
+		<div id="preview" class="form-group">
+			<img  src="">
+		  </div>
+
+		<div class="form-group" [ngClass]="{ 'has-error': f.submitted && !photoname.valid}">
 			<label for="photoname">Adjuntar Foto de Integrante</label> 
 			<input type='file' name="photoname" accept="image/*" (change)="onFileChanged($event)" class="btn btn-secundary">
-
 		</div>
+
+		{{member.photofile.value}} <br>
+		{{member.phototype}} <br>
+		{{member.photoname}} <br>
+
+		<img *ngIf="imageUrlPath" [src] = imageUrlPath>              
+
+
 
 		<div class="form-group">
 			<button type="submit" [disabled]="loading" class="btn btn-primary">Guardar</button>

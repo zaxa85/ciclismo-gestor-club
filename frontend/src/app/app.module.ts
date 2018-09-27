@@ -45,6 +45,9 @@ import { RegisterExpenditureComponent } from './control/index';
 import { IncomeListComponent } from './control/index';
 import { ExpenditureListComponent } from './control/index';
 import { PaymentListComponent } from './control/index';
+import { SportListComponent } from './sport/index';
+import { SportEventComponent } from './sport/index';
+import { SportTeamComponent } from './sport/index';
 
 import {
   MatMenuModule, MatIconModule, MatButtonModule, MatSidenavModule, MatToolbarModule,
@@ -87,6 +90,7 @@ export class SharedMaterialModule { }
     SponsorRegisterComponent,
     RegisterIncomeComponent,
     RegisterExpenditureComponent,IncomeListComponent,  ExpenditureListComponent, PaymentListComponent,
+    SportListComponent, SportEventComponent, SportTeamComponent,
     SidebarComponent
   ],
   imports: [

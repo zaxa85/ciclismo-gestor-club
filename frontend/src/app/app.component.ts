@@ -5,5 +5,12 @@ import { Component } from '@angular/core';
   templateUrl: './app.component.html'
 }) 
 export class AppComponent {
-  title = 'Gestor de socios de clubes de ciclismo';
+  title = 'Socios de Ciclismo App';
+  showHeader = true;
+
+  ngDoCheck() {
+    if (localStorage.getItem('currentUser')) {
+        this.showHeader = false;
+    }
+  } 
 }

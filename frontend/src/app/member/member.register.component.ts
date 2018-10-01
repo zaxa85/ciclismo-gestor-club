@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
-import { AlertService, MemberService } from '../services/index';
+import { AlertService, MemberService, StorageService } from '../services/index';
 import { Member } from '../models/index';
 import { DatePipe } from '@angular/common';
+import { environment } from '../../environments/environment';
+
 
 @Component({
     moduleId: module.id,
@@ -22,54 +24,53 @@ export class RegisterMemberComponent {
     errorMessage: string;
     member: Member;
     statuses = [{ id: 1, name: "Activo" }, { id: 2, name: "Suspendido" }, { id: 0, name: "Inactivo" }];
-    test: string;
-    public files: any[];
+    fileToUpload: File = null;
+    imageSrc: string;
+    private API_URL = environment.apiUrl;
 
     constructor(
         private route: ActivatedRoute,
         private router: Router,
         private memberService: MemberService,
+        private fileUploadService: StorageService,
         private datePipe: DatePipe,
         private alertService: AlertService) { }
 
-
-
     onFileChanged(event) {
 
-        this.files = event.target.files;
+        if (event.target.files && event.target.files[0]) {
 
-        const formData = new FormData();
-        for (const file of this.files) {
-            formData.append(name, file, file.name);
+            this.fileToUpload = event.target.files[0];
+            this.member.photoname = this.fileToUpload.name;
 
-            this.member.photoname = file.name,
-            this.member.phototype= file.type,
-            this.member.photofile = file;
+            const reader = new FileReader();
+
+            reader.onload = (event: any) => {
+                document.getElementById('preview_image').src = event.target.result
+            }
+
+            reader.readAsDataURL(this.fileToUpload);
+
+            const formData2 = new FormData();
+            formData2.append(name, this.fileToUpload, this.fileToUpload.name);
         }
-
     }
 
-    onUpload() {
-        const formData = new FormData();
-        for (const file of this.files) {
-            formData.append(name, file, file.name);
+    uploadFileToActivity() {
+        this.fileUploadService.postFile(this.fileToUpload).subscribe(data => {
 
-            alert(formData);
-        }
-
-        alert('onUpload')
-
-        //this.http.post('url', formData).subscribe(x => ....);
+            // do something, if upload success
+        }, error => {
+            console.log(error);
+        });
     }
 
     // Main process
     register() {
 
         this.loading = true;
-
         // If Member is NaN, this will follow member creation
         if (isNaN(this.member.id)) {
-
             this.memberService.create(this.member)
                 .subscribe(
                     data => {
@@ -83,7 +84,6 @@ export class RegisterMemberComponent {
 
         }
         else {
-
             this.memberService.update(this.member)
                 .subscribe(
                     data => {
@@ -95,6 +95,8 @@ export class RegisterMemberComponent {
                         this.loading = false;
                     });
         }
+
+        this.uploadFileToActivity();
     }
 
     //Initializing screen values
@@ -103,7 +105,7 @@ export class RegisterMemberComponent {
         //Initializing member
         this.member = new Member();
         this.member.status = 1;
-        this.member.photoname = "";
+        this.member.photoname = "default.jpg";
         this.member.datestart = new Date();//this.datePipe.transform(new Date(), 'yyyy-MM-dd');
         this.member.dob = new Date(); //this.datePipe.transform(new Date(), 'yyyy-MM-dd');
 
@@ -114,11 +116,8 @@ export class RegisterMemberComponent {
                     let id = +params['id'];
                     if (!isNaN(id)) {
                         this.getMember(id);
-
                     }
                 });
-                
-        var img = document.querySelector("#preview img");
     }
 
     getMember(id: number) {

@@ -3,6 +3,8 @@ import { Router, NavigationStart } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Subject } from 'rxjs/Subject';
 
+import { environment } from '../../environments/environment';
+
 @Injectable()
 export class AlertService {
     private subject = new Subject<any>();

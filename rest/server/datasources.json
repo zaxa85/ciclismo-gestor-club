@@ -17,7 +17,6 @@
     "name": "storage",
     "connector": "loopback-component-storage",
     "provider": "filesystem",
-    "root": "C:\\Users\\Pablo Sierralta\\development\\ciclismo-gestor-club\\storage",
-    "nameConflict": "makeUnique"
+    "root": "C:\\Users\\Pablo Sierralta\\development\\ciclismo-gestor-club\\storage"
   }
 }

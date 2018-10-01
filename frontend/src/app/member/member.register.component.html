@@ -31,27 +31,18 @@
 		<div class="form-group" [ngClass]="{ 'has-error': f.submitted && !datestart.valid}">
 			<label for="datestart">Fecha de Ingreso [MM/DD/YYYY]</label> <input type="date" class="form-control" name="datestart"
 			 required [ngModel]="member.datestart | date: 'yyyy-MM-dd'" #datestart="ngModel" required (ngModelChange)="dateChanged2($event)" />
-			<div *ngIf="f.submitted && !datestart.valid" class="help-block">La Fecha de inicio de requerido</div>
+			<div *ngIf="f.submitted && !datestart.valid" class="help-block">La fecha de ingreso es obligatorio</div>
 		</div>
-
-
-		<div id="preview" class="form-group">
-			<img  src="">
-		  </div>
+		
+		<img id="preview_image" [src]="'http://localhost:3000/api/containers/members/download/' + member.photoname" alt="your image"
+		 width="200px" height="200px" />
 
 		<div class="form-group" [ngClass]="{ 'has-error': f.submitted && !photoname.valid}">
-			<label for="photoname">Adjuntar Foto de Integrante</label> 
-			<input type='file' name="photoname" accept="image/*" (change)="onFileChanged($event)" class="btn btn-secundary">
+			<label class="btn btn-info" for="photoname">Adjuntar Foto de Integrante
+				<input id="photoname" type='file' name="photoname" accept="image/*" (change)="onFileChanged($event)" style="display:none;">
+			</label>
+			<span>{{member.photoname}}</span>
 		</div>
-
-		{{member.photofile.value}} <br>
-		{{member.phototype}} <br>
-		{{member.photoname}} <br>
-
-		<img *ngIf="imageUrlPath" [src] = imageUrlPath>              
-
-
-
 		<div class="form-group">
 			<button type="submit" [disabled]="loading" class="btn btn-primary">Guardar</button>
 			<img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />

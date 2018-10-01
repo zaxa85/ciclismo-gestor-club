@@ -3,13 +3,18 @@ import { Http, Headers, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map'
 
+import { environment } from '../../environments/environment';
+
 @Injectable()
 export class AuthenticationService {
+
+    private API_URL = environment.apiUrl;
+
     constructor(private http: Http) { }
 
     login(username: string, password: string) {
 
-        return this.http.get('http://192.168.1.132:3000/api/users2/count', {
+        return this.http.get(this.API_URL + '/api/users2/count', {
             search:
             { where: JSON.stringify({ username: username, password: password }) }
         })

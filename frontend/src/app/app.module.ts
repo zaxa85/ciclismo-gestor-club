@@ -28,7 +28,8 @@ import {
   PaymentService,
   IncomeService,
   ExpenditureService,
-  PeriodService
+  PeriodService,
+  StorageService
 } from './services/index';
 
 import { LoginComponent } from './login/index';
@@ -114,7 +115,8 @@ export class SharedMaterialModule { }
     IncomeService,
     ExpenditureService,
     PeriodService,
-    MediaMatcher
+    MediaMatcher,
+    StorageService
   ],
   bootstrap: [AppComponent]
 })

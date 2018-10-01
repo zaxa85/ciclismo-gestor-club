@@ -2,36 +2,40 @@ import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
 
 import { Member } from '../models/index';
+import { environment } from '../../environments/environment';
 
 @Injectable()
 export class MemberService {
+
+    private API_URL = environment.apiUrl;
+
     constructor(private http: Http) { }
 
     getAll() {
-        return this.http.get('http://192.168.1.132:3000/api/member', this.jwt()).map((response: Response) => response.json());
+        return this.http.get(this.API_URL + '/api/member', this.jwt()).map((response: Response) => response.json());
     }
 
     getByStatus(status: number) {       
-        return this.http.get('http://192.168.1.132:3000/api/member', {
+        return this.http.get(this.API_URL + '/api/member', {
             search:
             { filter: JSON.stringify({"where": { status: status} })}
         }).map((response: Response) => response.json());
     }
 
     getById(id: number) {
-        return this.http.get('http://192.168.1.132:3000/api/member/' + id, this.jwt()).map((response: Response) => response.json());
+        return this.http.get(this.API_URL + '/api/member/' + id, this.jwt()).map((response: Response) => response.json());
     }
 
     create(member: Member) {
-        return this.http.post('http://192.168.1.132:3000/api/member/', member, this.jwt()).map((response: Response) => response.json());
+        return this.http.post(this.API_URL + '/api/member/', member, this.jwt()).map((response: Response) => response.json());
     }
 
     update(member: Member) {
-        return this.http.patch('http://192.168.1.132:3000/api/member/' + member.id, member, this.jwt()).map((response: Response) => response.json());
+        return this.http.patch(this.API_URL + '/api/member/' + member.id, member, this.jwt()).map((response: Response) => response.json());
     }
 
     delete(id: number) {
-        return this.http.delete('http://192.168.1.132:3000/api/member/' + id, this.jwt()).map((response: Response) => response.json());
+        return this.http.delete(this.API_URL + '/api/member/' + id, this.jwt()).map((response: Response) => response.json());
     }
 
     // private helper methods

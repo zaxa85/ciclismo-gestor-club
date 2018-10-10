@@ -6,7 +6,8 @@ export class Income {
     status: number;
     type: number;
     amount: number;
-    
+    document: string;
+
     constructor(
     ) { }
 }

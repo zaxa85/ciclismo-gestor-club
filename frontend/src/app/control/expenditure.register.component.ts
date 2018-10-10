@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Subscription }from 'rxjs/Subscription';
-import { AlertService, ExpenditureService, PeriodService } from '../services/index';
+import { AlertService, ExpenditureService, PeriodService, StorageService } from '../services/index';
 import { Expenditure } from '../models/index';
 import { Period } from '../models/index';
 import { DatePipe } from '@angular/common';
@@ -33,8 +33,11 @@ export class RegisterExpenditureComponent {
         private router: Router,
         private expenditureService: ExpenditureService,
         private periodService: PeriodService,
+        private fileUploadService: StorageService,
         private datePipe: DatePipe,
         private alertService: AlertService) { }
+        fileToUpload: File = null;
+        imageSrc: string;
 
     // Main process
     register() {
@@ -69,8 +72,37 @@ export class RegisterExpenditureComponent {
                     this.loading = false;
                 });
         }
+
+        this.uploadFileToActivity();
     }
 
+    onFileChanged(event) {
+
+        if (event.target.files && event.target.files[0]) {
+
+            this.fileToUpload = event.target.files[0];
+            this.expenditure.document = this.fileToUpload.name;
+
+            const reader = new FileReader();
+
+            reader.onload = (event: any) => {
+                (<HTMLImageElement>document.getElementById('preview_image')).src = event.target.result
+            }
+
+            reader.readAsDataURL(this.fileToUpload);
+
+            const formData2 = new FormData();
+            formData2.append(name, this.fileToUpload, this.fileToUpload.name);
+        }
+    }
+    
+    uploadFileToActivity() {
+        this.fileUploadService.postFile(this.fileToUpload, 'expenditures').subscribe(data => {
+            // do something, if upload success
+        }, error => {
+            console.log(error);
+        });
+    }
     //Initializing screen values
     ngOnInit(): void {
 
@@ -81,6 +113,9 @@ export class RegisterExpenditureComponent {
         this.expenditure = new Expenditure();
         this.expenditure.status = 1;
         this.expenditure.type = 0;
+        this.expenditure.document = "default.jpg";
+        this.expenditure.id_fk_period_id = (new Date()).getFullYear();
+
       //  this.expenditure.datestart = new Date();//this.datePipe.transform(new Date(), 'yyyy-MM-dd');
        // this.expenditure.dob = new Date(); //this.datePipe.transform(new Date(), 'yyyy-MM-dd');
 

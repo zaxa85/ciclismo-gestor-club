@@ -6,6 +6,7 @@ export class Expenditure {
     status: number;
     type: number;
     amount: number;
+    document: string;
     
     constructor(
     ) { }

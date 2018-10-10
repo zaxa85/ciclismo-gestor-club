@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Subscription }from 'rxjs/Subscription';
-import { AlertService, MemberService, PaymentService, PeriodService } from '../services/index';
+import { AlertService, MemberService, PeriodService, PaymentService, StorageService  } from '../services/index';
 import { Member } from '../models/index';
-import { Payment } from '../models/index';
 import { Period } from '../models/index';
+import { Payment } from '../models/index';
 import { DatePipe } from '@angular/common';
 
 @Component({
@@ -19,27 +19,58 @@ export class RegisterPaymentComponent {
     errorMessage: string;
     payment: Payment;
     members: Member[] = [];
-    //periods: Period[] = [];
-    periods = [{ id: 2016, name: "2016" }, { id: 2017, name: "2017" }];
+    periods: Period[] = [];
     months = [{ id: 1, name: "Enero" }, { id: 2, name: "Febrero" }, { id: 3, name: "Marzo" }, 
                 { id: 4, name: "Abril" }, { id: 5, name: "Mayo" }, { id: 6, name: "Junio" }, 
                 { id: 7, name: "Julio" }, { id: 8, name: "Agosto" }, { id: 9, name: "Septiembre" }, 
                 { id: 10, name: "Octubre" }, { id: 11, name: "Noviembre" }, { id: 12, name: "Diciembre" }];
     rutaBalance = '/control.payment';
-
     rutaIngreso = '/payment.list';
     rutaFinal = '';
     dropDisabled = false;
     administrator = true;
+    fileToUpload: File = null;
+    imageSrc: string;
+    currentYear: number;
 
     constructor(
         private route: ActivatedRoute,
         private router: Router,
         private memberService: MemberService,
-        private periodService: PeriodService,
+        private fileUploadService: StorageService,
         private paymentService: PaymentService,
+        private periodService: PeriodService,
         private datePipe: DatePipe,
         private alertService: AlertService) { }
+
+        onFileChanged(event) {
+
+            if (event.target.files && event.target.files[0]) {
+    
+                this.fileToUpload = event.target.files[0];
+                this.payment.document = this.fileToUpload.name;
+    
+                const reader = new FileReader();
+    
+                reader.onload = (event: any) => {
+                    (<HTMLImageElement>document.getElementById('preview_image')).src = event.target.result
+                }
+    
+                reader.readAsDataURL(this.fileToUpload);
+    
+                const formData2 = new FormData();
+                formData2.append(name, this.fileToUpload, this.fileToUpload.name);
+            }
+        }
+
+        
+    uploadFileToActivity() {
+        this.fileUploadService.postFile(this.fileToUpload, 'payments').subscribe(data => {
+            // do something, if upload success
+        }, error => {
+            console.log(error);
+        });
+    }
 
     // Main process
     register() {
@@ -76,6 +107,8 @@ export class RegisterPaymentComponent {
                     this.loading = false;
                 });
         }
+
+        this.uploadFileToActivity();
     }
 
     approve() {
@@ -84,6 +117,8 @@ export class RegisterPaymentComponent {
         this.definirRetorno();
 
         this.payment.status = 2;
+        this.payment.document = "default.jpg";
+
         this.paymentService.update(this.payment)
         .subscribe(
         data => {
@@ -99,6 +134,12 @@ export class RegisterPaymentComponent {
     //Initializing screen values
     ngOnInit(): void {
 
+        //Setting default values
+        this.currentYear = (new Date()).getFullYear();
+
+        //Load periods dropdown
+        this.periodService.getByStatus(1).subscribe(periods => { this.periods = periods; });
+        
         //Load members dropdown
         this.memberService.getByStatus(1).subscribe(members => { this.members = members; });
         
@@ -109,7 +150,6 @@ export class RegisterPaymentComponent {
         this.payment.datecreated = new Date();
         
         //Loading member if it exists
-        
         this.sub = this.route.params
             .subscribe(
             params => {
@@ -121,7 +161,7 @@ export class RegisterPaymentComponent {
 
                 } else if (params['id'] == "all") {
                     this.rutaFinal = "all";
-
+                    this.payment.id_fk_period_id = (new Date()).getFullYear();
                 } else {
                     let id = +params['id'];
 

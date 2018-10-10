@@ -46,7 +46,7 @@ export class RegisterMemberComponent {
             const reader = new FileReader();
 
             reader.onload = (event: any) => {
-                document.getElementById('preview_image').src = event.target.result
+                (<HTMLImageElement>document.getElementById('preview_image')).src = event.target.result
             }
 
             reader.readAsDataURL(this.fileToUpload);
@@ -57,8 +57,7 @@ export class RegisterMemberComponent {
     }
 
     uploadFileToActivity() {
-        this.fileUploadService.postFile(this.fileToUpload).subscribe(data => {
-
+        this.fileUploadService.postFile(this.fileToUpload, 'members').subscribe(data => {
             // do something, if upload success
         }, error => {
             console.log(error);

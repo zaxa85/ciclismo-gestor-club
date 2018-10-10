@@ -33,6 +33,17 @@
 			<label for="description">Descripcion</label> <input type="text" class="form-control" name="description" [(ngModel)]="expenditure.description" #description="ngModel" required value="{{expenditure.document}}" />
 			<div *ngIf="f.description && !description.valid" class="help-block">Descripcion es requerido</div>
 		</div>
+
+		<img id="preview_image" [src]="'http://localhost:3000/api/containers/expenditures/download/' + expenditure.document" alt="your image"
+		width="200px" height="200px" />
+
+	   <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !document.valid}">
+		   <label class="btn btn-info" for="document">Adjuntar Foto de Integrante
+			   <input id="document" type='file' name="document" accept="image/*" (change)="onFileChanged($event)" style="display:none;">
+		   </label>
+		   <span>{{expenditure.document}}</span>
+	   </div>
+
 		<div class="form-group">
 			<button type="submit" [disabled]="loading" class="btn btn-primary">Guardar</button>
 			<img *ngIf="loading"

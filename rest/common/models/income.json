@@ -29,6 +29,9 @@
     },
     "id_fk_sponsor_id": {
       "type": "number"
+    },
+    "document": {
+      "type": "string"
     }
   },
   "validations": [],

@@ -10,9 +10,9 @@ export class StorageService {
     private API_URL = environment.apiUrl;
 
     constructor(private http: Http) { }
- 
-    postFile(fileToUpload: File): Observable<boolean> {
-        const endpoint = this.API_URL + '/api/containers/members/upload';
+
+    postFile(fileToUpload: File, location: string): Observable<boolean> {
+        const endpoint = this.API_URL + '/api/containers/' + location + '/upload';
         const formData: FormData = new FormData();
         formData.append('fileKey', fileToUpload, fileToUpload.name);
         return<any>this.http.post(endpoint, formData); 

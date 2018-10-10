@@ -26,6 +26,9 @@
     },
     "type": {
       "type": "number"
+    },
+    "document": {
+      "type": "string"
     }
   },
   "validations": [],

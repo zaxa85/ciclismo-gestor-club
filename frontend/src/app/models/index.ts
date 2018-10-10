@@ -7,3 +7,4 @@ export * from './payment';
 export * from './period';
 export * from './sponsor';
 export * from './user';
+export * from './sportevent';

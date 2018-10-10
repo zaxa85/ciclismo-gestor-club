@@ -9,3 +9,4 @@ export * from './expenditure.service';
 export * from './income.service';
 export * from './period.service';
 export * from './storage.service';
+export * from './sportevent.service';

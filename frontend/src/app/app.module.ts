@@ -29,7 +29,8 @@ import {
   IncomeService,
   ExpenditureService,
   PeriodService,
-  StorageService
+  StorageService,
+  SportEventService
 } from './services/index';
 
 import { LoginComponent } from './login/index';

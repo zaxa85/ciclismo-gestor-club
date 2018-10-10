@@ -10,7 +10,9 @@ export class Member {
 
     //Aditional information
     /*
+        - dni
         - direccion
+        - ubigeo
         - foto
 
     */

@@ -1,7 +1,8 @@
-<div>
+<div class="container">
 	<h4>Socios Registrados:</h4>
-	<a class="btn btn-default btn-sm" [routerLink]="['/member.register']">Registrar nuevo socio</a><br> <br>
-	
+	<a *ngIf="isAdmin" class="btn btn-default btn-sm" [routerLink]="['/member.register']">Registrar nuevo socio</a><br>
+	<br>
+
 	<table>
 		<tr>
 			<td style="width: 10%">Filtrar:</td>
@@ -10,12 +11,12 @@
 			<td style="width: 10%">Estado</td>
 			<td style="width: 20%"><select class="form-control" [(ngModel)]="statusFilter" name=statusFilter (change)="onChange($event.target.value)">
 					<option *ngFor="let c of statuses" value="{{c.id}}">{{c.name}}</option>
-			</select></td>
+				</select></td>
 			<td></td>
 		</tr>
 	</table>
 	<br>
-	
+
 	<table class="table table-hover table-sm table-inverse table-responsive table-condensed">
 		<thead class="thead-inverse">
 			<tr>
@@ -34,7 +35,7 @@
 				<td>{{member.dob}}</td>
 				<td>{{member.datestart | date: 'yyyy-MM-dd'}}</td>
 				<td>{{showStatusDescription(member.status)}}</td>
-				<td><a [routerLink]="['/member.register', member.id]">Modificar</a></td>
+				<td *ngIf="isAdmin"><a [routerLink]="['/member.register', member.id]">Modificar</a></td>
 			</tr>
 		</tbody>
 	</table>

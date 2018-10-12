@@ -11,7 +11,6 @@ import { routing } from './app.routing';
 
 import { AlertComponent } from './directives/index';
 import { NavbarComponent } from './directives/index';
-import { SidebarComponent } from './directives/index';
 import { MediaMatcher } from '@angular/cdk/layout';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
@@ -51,6 +50,9 @@ import { SportListComponent } from './sport/index';
 import { SportEventComponent } from './sport/index';
 import { SportTeamComponent } from './sport/index';
 
+import { MatCardModule } from '@angular/material/card';
+import { MatInputModule } from '@angular/material/input';
+
 import {
   MatMenuModule, MatIconModule, MatButtonModule, MatSidenavModule, MatToolbarModule,
   MatListModule, MatExpansionModule, MatFormFieldModule
@@ -69,7 +71,9 @@ import { OverlayModule } from '@angular/cdk/overlay';
     // Material
     MatMenuModule,
     MatButtonModule,
-    MatIconModule, MatSidenavModule, MatToolbarModule, MatListModule, MatExpansionModule, MatFormFieldModule
+    MatIconModule, MatSidenavModule, MatToolbarModule, MatListModule, MatExpansionModule, MatFormFieldModule,
+    MatCardModule,
+    MatInputModule
   ]
 })
 
@@ -92,8 +96,8 @@ export class SharedMaterialModule { }
     SponsorRegisterComponent,
     RegisterIncomeComponent,
     RegisterExpenditureComponent,IncomeListComponent,  ExpenditureListComponent, PaymentListComponent,
-    SportListComponent, SportEventComponent, SportTeamComponent,
-    SidebarComponent
+    SportListComponent, SportEventComponent, SportTeamComponent
+    
   ],
   imports: [
     BrowserModule,

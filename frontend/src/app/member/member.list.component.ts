@@ -16,12 +16,15 @@ export class MemberListComponent implements OnInit {
     members: Member[] = [];
     statuses = [{ id: 1, name: "Activo" }, { id: 2, name: "Suspendido" }, { id: 0, name: "Inactivo" }, { id: -1, name: "Todos" }];
     statusFilter = 1;
-    
+    isAdmin = false;
+
     constructor(
         private memberService: MemberService,
         private datePipe: DatePipe
         ) {
         this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        var role = localStorage.getItem('userRoles');
+        this.isAdmin = (role === "admin") ? true : false;
     }
 
     ngOnInit() {

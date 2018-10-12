@@ -29,7 +29,7 @@
 			<div *ngIf="f.submitted && !dob.valid" class="help-block">La fecha de nacimiento es obligatorio</div>
 		</div>
 		<div class="form-group" [ngClass]="{ 'has-error': f.submitted && !datestart.valid}">
-			<label for="datestart">Fecha de Ingreso [MM/DD/YYYY]</label> <input type="date" class="form-control" name="datestart"
+			<label for="datestart">Fecha de Ingreso [MM/DD/YYYY]</label> <input type="date" class="form-control" name="datestart" 
 			 required [ngModel]="member.datestart | date: 'yyyy-MM-dd'" #datestart="ngModel" required (ngModelChange)="dateChanged2($event)" />
 			<div *ngIf="f.submitted && !datestart.valid" class="help-block">La fecha de ingreso es obligatorio</div>
 		</div>

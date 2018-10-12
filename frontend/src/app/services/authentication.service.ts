@@ -25,6 +25,14 @@ export class AuthenticationService {
                     // store user details and jwt token in local storage to keep user logged in between page refreshes
                     //localStorage.setItem('currentUser', JSON.stringify(user));
                     localStorage.setItem('currentUser',  JSON.stringify({ username: username, password: password }));
+                    
+                    if (username === "admin") {
+                        localStorage.setItem('userRoles', "admin");
+                    } else {
+                        localStorage.setItem('userRoles', "user");
+
+                    }
+                    
                 }
                 else {
                     throw "Usuario o contraseña incorrecto";
@@ -35,5 +43,7 @@ export class AuthenticationService {
     logout() {
         // remove user from local storage to log user out
         localStorage.removeItem('currentUser');
+        localStorage.removeItem('userRoles');
+
     }
 }

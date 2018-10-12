@@ -9,10 +9,7 @@
       "outDir": "dist",
       "assets": [
         "assets",
-        "logo.ico",
-        "app.css",
-        "style.css",
-        "indigo-pink.css"
+        "logo.ico"
       ],
       "index": "index.html",
       "main": "main.ts",
@@ -22,7 +19,8 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
       "styles": [
-        "styles.css"
+        "styles.css",
+        "theme.scss"
       ],
       "scripts": [],
       "environmentSource": "environments/environment.ts",

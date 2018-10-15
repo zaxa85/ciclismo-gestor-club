@@ -1,0 +1,43 @@
+{
+  "name": "payment",
+  "plural": "payment",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "id": {
+      "type": "number",
+      "required": true
+    },
+    "id_fk_member_id": {
+      "type": "number"
+    },
+    "id_fk_period_id": {
+      "type": "number"
+    },
+    "dateperform": {
+      "type": "string"
+    },
+    "datecreated": {
+      "type": "string"
+    },
+    "status": {
+      "type": "number"
+    },
+    "document": {
+      "type": "string"
+    },
+    "month": {
+      "type": "number"
+    },
+    "amount": {
+      "type": "number"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

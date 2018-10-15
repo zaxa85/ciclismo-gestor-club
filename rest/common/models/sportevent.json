@@ -1,0 +1,44 @@
+{
+  "name": "sportevent",
+  "plural": "sportevent",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "id": {
+      "type": "number",
+      "required": true
+    },     
+    "id_fk_period_id": {
+      "type": "number",
+      "required": true
+    },
+    "name": {
+      "type": "string"
+    },
+    "organizer": {
+      "type": "string"
+    },
+    "location": {
+      "type": "string"
+    },
+    "type": {
+      "type": "number"
+    },
+    "status": {
+      "type": "number"
+    },
+    "datestart": {
+      "type": "string"
+    },
+    "datefinish": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

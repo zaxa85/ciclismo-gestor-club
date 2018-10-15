@@ -1,0 +1,41 @@
+{
+  "name": "sponsor",
+  "plural": "sponsor",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "id": {
+      "type": "number",
+      "required": true
+    },
+    "name": {
+      "type": "string"
+    },
+    "realname": {
+      "type": "string"
+    },
+    "document": {
+      "type": "string"
+    },
+    "documenttype": {
+      "type": "number"
+    },
+    "status": {
+      "type": "number"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "income": {
+      "type": "belongsTo",
+      "model": "income",
+      "foreignKey": "id",
+      "through": ""
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

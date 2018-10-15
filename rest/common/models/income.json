@@ -1,0 +1,48 @@
+{
+  "name": "income",
+  "plural": "income",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "id": {
+      "type": "number",
+      "required": true
+    },     
+    "id_fk_period_id": {
+      "type": "number",
+      "required": true
+    },
+    "description": {
+      "type": "string"
+    },
+    "status": {
+      "type": "number"
+    },
+    "amount": {
+      "type": "number"
+    },
+    "type": {
+      "type": "number"
+    },
+    "id_fk_sponsor_id": {
+      "type": "number"
+    },
+    "document": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "sponsor": {
+      "type": "belongsTo",
+      "model": "sponsor",
+      "foreignKey": "id_fk_sponsor_id",
+      "through": ""
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

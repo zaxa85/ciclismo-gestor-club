@@ -1,0 +1,90 @@
+{
+  "_meta": {
+    "sources": [
+      "loopback/common/models",
+      "loopback/server/models",
+      "../common/models",
+      "./models"
+    ],
+    "mixins": [
+      "loopback/common/mixins",
+      "loopback/server/mixins",
+      "../common/mixins",
+      "./mixins"
+    ]
+  },
+  "User": {
+    "dataSource": "db"
+  },
+  "AccessToken": {
+    "dataSource": "db",
+    "public": false
+  },
+  "ACL": {
+    "dataSource": "db",
+    "public": false
+  },
+  "RoleMapping": {
+    "dataSource": "db",
+    "public": false,
+    "options": {
+      "strictObjectIDCoercion": true
+    }
+  },
+  "Role": {
+    "dataSource": "db",
+    "public": false
+  },
+  "user": {
+    "dataSource": "Postgres",
+    "public": true
+  },
+  "user2": {
+    "dataSource": "Postgres",
+    "public": true
+  },
+  "member": {
+    "dataSource": "Postgres",
+    "public": true
+  },
+  "payment": {
+    "dataSource": "Postgres",
+    "public": true
+  },
+  "income": {
+    "dataSource": "Postgres",
+    "public": true
+  },
+  "expenditure": {
+    "dataSource": "Postgres",
+    "public": true
+  },
+  "period": {
+    "dataSource": "Postgres",
+    "public": true
+  },
+  "sponsor": {
+    "dataSource": "Postgres",
+    "public": true
+  },
+  "v_payment_control": {
+    "dataSource": "Postgres",
+    "public": true
+  },
+  "v_payment_balance": {
+    "dataSource": "Postgres",
+    "public": true
+  },
+  "v_expenditure_by_type": {
+    "dataSource": "Postgres",
+    "public": true
+  },
+  "v_income_by_type": {
+    "dataSource": "Postgres",
+    "public": true
+  },
+  "container": {
+    "dataSource": "storage",
+    "public": true
+  }
+}

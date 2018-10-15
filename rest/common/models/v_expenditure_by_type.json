@@ -1,0 +1,26 @@
+{
+  "name": "v_expenditure_by_type",
+  "plural": "v_expenditure_by_type",
+  "base": "PersistedModel",
+  "idInjection": false,
+  "options": {
+    "validateUpsert": false
+  },
+  "properties": {
+    "type": {
+      "id":true,
+      "type": "string"
+    },
+    "id_fk_period_id": {
+      "id":true,
+      "type": "string"
+    },
+    "amount": {
+      "type": "number"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

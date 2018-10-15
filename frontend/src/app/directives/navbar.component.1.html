@@ -1,0 +1,112 @@
+<mat-sidenav-container>
+	<mat-sidenav #sidenav mode="over">
+
+		<div fxLayout="column" *ngIf=isLogged>
+			<mat-toolbar fxLayoutAlign="left center">
+
+				<span>Socios de Ciclismo</span>
+
+				<button mat-button [routerLink]="['/home']" (click)="sidenav.open()">
+					<mat-icon>home</mat-icon>
+				</button>
+			</mat-toolbar>
+
+			<div collapse>
+				<button mat-button [routerLink]="['/member.list']">Gestión de Socios</button>
+			</div>
+
+			<div collapse>
+				<button mat-button [matMenuTriggerFor]="mdeportiva">Gestión Deportiva</button>
+				<mat-menu #mdeportiva="matMenu" [overlapTrigger]="false">
+					<button mat-button [routerLink]="['/sport.list']">Calendario de Eventos</button>
+					<button mat-button [routerLink]="['/sport.event']" *ngIf="isAdmin">Gestor de Competencias </button>
+					<button mat-button [routerLink]="['/sport.team']">Rendimiento del Equipo</button>
+				</mat-menu>
+			</div>
+
+			<div collapse>
+				<button mat-button [routerLink]="['/sponsor.list']" *ngIf="isAdmin">Gestión de Patrocinadores</button>
+			</div>
+			<div collapse>
+				<button mat-button [matMenuTriggerFor]="mfinanciera">Gestión Financiera</button>
+				<mat-menu #mfinanciera="matMenu" [overlapTrigger]="false">
+					<button mat-button [routerLink]="['/control.payment']" *ngIf="isAdmin">Registro de Aportes de Socios</button>
+					<button mat-button [routerLink]="['/income.list']" *ngIf="isAdmin">Registro de Ingresos</button>
+					<button mat-button [routerLink]="['/expenditure.list']" *ngIf="isAdmin">Registro de Compras / Gastos</button>
+					<button mat-button [routerLink]="['/payment.list']">Consulta de Aporte Individual</button>
+					<button mat-button [routerLink]="['/control.balance']" *ngIf="isAdmin">Balance</button>
+				</mat-menu>
+			</div>
+			<br>
+			<br>
+			<br>
+			<br>
+			<button mat-button (click)="logout()">
+				<mat-icon>power_settings_new
+				</mat-icon>
+			</button>
+			<button mat-button (click)="logout()">
+				<mat-icon>settings</mat-icon>
+			</button>
+		</div>
+	</mat-sidenav>
+
+	<div *ngIf=isLogged>
+		<mat-toolbar>
+
+			<button mat-button (click)="sidenav.open()" fxHide="false" fxHide.gt-sm>
+				<mat-icon>menu</mat-icon>
+			</button>
+			<span>Socios de Ciclismo</span>
+
+			<div fxLayout="row" fxShow="false" fxShow.gt-sm>
+
+				<button mat-button [routerLink]="['/home']" (click)="sidenav.open()">
+					<mat-icon>home</mat-icon>
+				</button>
+
+				<button mat-button [routerLink]="['/member.list']">Gestión de Socios</button>
+
+				<button mat-button [matMenuTriggerFor]="mdeportiva">Gestión Deportiva</button>
+				<mat-menu #mdeportiva="matMenu" [overlapTrigger]="false">
+					<button mat-button [routerLink]="['/sport.list']">Calendario de Eventos</button>
+					<button mat-button [routerLink]="['/sport.event']" *ngIf="isAdmin">Gestor de Eventos </button>
+					<button mat-button [routerLink]="['/sport.team']">Rendimiento del Equipo</button>
+				</mat-menu>
+
+				<button mat-button [routerLink]="['/sponsor.list']" *ngIf="isAdmin">Gestión de Patrocinadores</button>
+
+				<button mat-button [matMenuTriggerFor]="mfinanciera"  *ngIf="isAdmin">Gestión Financiera</button>
+				<mat-menu #mfinanciera="matMenu" [overlapTrigger]="false">
+					<button mat-button [routerLink]="['/control.payment']" *ngIf="isAdmin">Registro de Aportes de Socios</button>
+					<button mat-button [routerLink]="['/income.list']" *ngIf="isAdmin">Registro de Ingresos</button>
+					<button mat-button [routerLink]="['/expenditure.list']" *ngIf="isAdmin">Registro de Compras / Gastos</button>
+					<button mat-button [routerLink]="['/payment.list']">Consulta de Aporte Individual</button>
+					<button mat-button [routerLink]="['/control.balance']" *ngIf="isAdmin">Balance</button>
+				</mat-menu>
+			</div>
+			<span style="flex: 1 1 auto;"></span>
+			<div fxLayout="row" fxShow="false" fxShow.gt-sm>
+				<button mat-button disabled>
+					User: {{userFullName}} &nbsp;
+					Tipo de Usuario: {{userType}}
+				</button>
+				<button mat-button (click)="logout()">
+					<mat-icon>power_settings_new
+					</mat-icon>
+				</button>
+				<button mat-button (click)="logout()">
+					<mat-icon>settings</mat-icon>
+				</button>
+			</div>
+		</mat-toolbar>
+	</div>
+	<div class="jumbotron">
+		<div class="container">
+			<div class="col-sm-10 col-sm-offset-1">
+				<alert></alert>
+				<router-outlet></router-outlet>
+			</div>
+		</div>
+	</div>
+</mat-sidenav-container>

@@ -11,6 +11,9 @@ import { routing } from './app.routing';
 
 import { AlertComponent } from './directives/index';
 import { NavbarComponent } from './directives/index';
+import { TopNavComponent } from './directives/index';
+import { MenuListItemComponent } from './directives/index';
+
 import { MediaMatcher } from '@angular/cdk/layout';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
@@ -29,6 +32,7 @@ import {
   ExpenditureService,
   PeriodService,
   StorageService,
+  NavService,
   SportEventService
 } from './services/index';
 
@@ -85,6 +89,8 @@ export class SharedMaterialModule { }
     AppComponent,
     AlertComponent,
     NavbarComponent,
+    TopNavComponent,
+    MenuListItemComponent,
     HomeComponent,
     LoginComponent,
     ControlBalanceComponent,
@@ -113,6 +119,7 @@ export class SharedMaterialModule { }
     AuthGuard,
     AlertService,
     AuthenticationService,
+    NavService,
     MemberService,
     UserService,
     SponsorService,

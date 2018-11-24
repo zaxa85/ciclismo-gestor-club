@@ -8,3 +8,4 @@ export * from './period';
 export * from './sponsor';
 export * from './user';
 export * from './sportevent';
+export * from './nav-item';

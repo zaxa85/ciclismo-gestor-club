@@ -39,7 +39,9 @@
 
 		<div class="form-group" [ngClass]="{ 'has-error': f.submitted && !photoname.valid}">
 			<label class="btn btn-info" for="photoname">Adjuntar Foto de Integrante
-				<input id="photoname" type='file' name="photoname" accept="image/*" (change)="onFileChanged($event)" style="display:none;">
+
+				<input type='file' name="photoname" [(ngModel)]="member.photoname"  #photoname="ngModel" accept="image/*" (change)="onFileChanged($event)" style="display:none;">
+
 			</label>
 			<span>{{member.photoname}}</span>
 		</div>

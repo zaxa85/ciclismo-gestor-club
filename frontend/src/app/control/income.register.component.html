@@ -37,7 +37,7 @@
 		<img id="preview_image" [src]="'http://localhost:3000/api/containers/incomes/download/' + income.document" alt="your image"
 		width="200px" height="200px" />
 
-	   <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !income.valid}">
+	   <div class="form-group" [ngClass]="{ 'has-error': f.submitted }">
 		   <label class="btn btn-info" for="income">Adjuntar Foto de Integrante
 			   <input id="income" type='file' name="income" accept="image/*" (change)="onFileChanged($event)" style="display:none;">
 		   </label>

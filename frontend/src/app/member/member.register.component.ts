@@ -129,11 +129,11 @@ export class RegisterMemberComponent {
         this.sub.unsubscribe();
     }
 
-    private dateChanged1(newDate) {
+    dateChanged1(newDate) {
         this.member.dob = newDate;
     }
 
-    private dateChanged2(newDate) {
+    dateChanged2(newDate) {
         this.member.datestart = newDate;
     }
 }

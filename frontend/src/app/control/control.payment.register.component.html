@@ -38,7 +38,11 @@
 
 		<div class="form-group" [ngClass]="{ 'has-error': f.submitted && !document.valid}">
 			<label class="btn btn-info" for="document">Adjuntar documento
+<!--
 				<input id="document" type='file' name="document" accept="image/*" (change)="onFileChanged($event)" style="display:none;">
+-->
+				<input type='file' name="document" [(ngModel)]="payment.document" #document="ngModel" accept="image/*" (change)="onFileChanged($event)" style="display:none;">
+
 			</label>
 			<span>{{payment.document}}</span>
 		</div>

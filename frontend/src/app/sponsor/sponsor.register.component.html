@@ -19,7 +19,7 @@
 			</select>
 		</div>	
 		<div class="form-group" [ngClass]="{ 'has-error': f.submitted && !document.valid }">
-			<label for="document">Documento</label> <input type="text" class="form-control" name="document" [(ngModel)]="sponsor.document" #document="ngModel" required value="{{sponsor.amount}}" />
+			<label for="document">Documento</label> <input type="text" class="form-control" name="document" [(ngModel)]="sponsor.document" #document="ngModel" required value="{{sponsor.document}}" />
 			<div *ngIf="f.document && !document.valid" class="help-block">Documento es requerido</div>
 		</div>
 		

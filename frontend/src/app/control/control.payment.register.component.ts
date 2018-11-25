@@ -183,7 +183,7 @@ export class RegisterPaymentComponent {
          this.sub.unsubscribe();
     }
 
-    private dateChanged(newDate) {
+    dateChanged(newDate) {
         this.payment.dateperform = newDate;
     }
 
@@ -197,7 +197,7 @@ export class RegisterPaymentComponent {
         }
     }
 
-    private back() {
+    back() {
         this.definirRetorno();
         this.router.navigate([this.rutaFinal]);
     }

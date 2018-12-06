@@ -2,7 +2,7 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { NgModule } from '@angular/core';
+import { NgModule, ErrorHandler } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
@@ -53,6 +53,8 @@ import { PaymentListComponent } from './control/index';
 import { SportListComponent } from './sport/index';
 import { SportEventComponent } from './sport/index';
 import { SportTeamComponent } from './sport/index';
+
+import { CustomErrorHandler } from './shared/index';
 
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
@@ -128,7 +130,8 @@ export class SharedMaterialModule { }
     ExpenditureService,
     PeriodService,
     MediaMatcher,
-    StorageService
+    StorageService,
+    { provide: ErrorHandler, useClass: CustomErrorHandler } // overrride default error handler
   ],
   bootstrap: [AppComponent]
 })

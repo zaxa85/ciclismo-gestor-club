@@ -1,6 +1,6 @@
 export const environment = {
   production: true,
 
-  apiUrl: 'http://selecciondecampeones.org:3000'
+  apiUrl: 'http://104.131.102.15:3000'
 
 };

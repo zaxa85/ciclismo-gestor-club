@@ -100,7 +100,7 @@ export class AppComponent implements AfterViewInit {
       this._mobileQueryListener = () => changeDetectorRef.detectChanges();
       this.mobileQuery.addListener(this._mobileQueryListener);
   }
-
+  
   ngAfterViewInit() {
     this.navService.appDrawer = this.appDrawer;
   }

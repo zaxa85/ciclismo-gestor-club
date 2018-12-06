@@ -42,6 +42,8 @@ export class LoginComponent implements OnInit {
     }
 
     isFieldInvalid(field: string) { // {6}
+
+
         return (
             (!this.form.get(field).valid && this.form.get(field).touched) ||
             (this.form.get(field).untouched && this.formSubmitAttempt)
@@ -49,6 +51,7 @@ export class LoginComponent implements OnInit {
     }
 
     login() {
+
         this.loading = true;
 
         if (this.form.valid) {

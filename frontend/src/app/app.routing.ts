@@ -27,28 +27,38 @@ const appRoutes: Routes = [
     { path: 'control.balance', component: ControlBalanceComponent, canActivate: [AuthGuard] },
     { path: 'control.payment', component: ControlPaymentComponent, canActivate: [AuthGuard] },
     { path: 'control.register.payment', component: RegisterPaymentComponent, canActivate: [AuthGuard] },
-        { path: 'control.register.payment/:id', 
-        canActivate: [ AuthGuard],
-        component: RegisterPaymentComponent},
+    {
+        path: 'control.register.payment/:id',
+        canActivate: [AuthGuard],
+        component: RegisterPaymentComponent
+    },
     { path: 'member.register', component: RegisterMemberComponent, canActivate: [AuthGuard] },
-        { path: 'member.register/:id', 
-        canActivate: [ AuthGuard],
-        component: RegisterMemberComponent},
+    {
+        path: 'member.register/:id',
+        canActivate: [AuthGuard],
+        component: RegisterMemberComponent
+    },
     { path: 'member.list', component: MemberListComponent, canActivate: [AuthGuard] },
     { path: 'sponsor.list', component: SponsorListComponent, canActivate: [AuthGuard] },
     { path: 'sponsor.register', component: SponsorRegisterComponent, canActivate: [AuthGuard] },
-        { path: 'sponsor.register/:id', 
-        canActivate: [ AuthGuard],
-        component: SponsorRegisterComponent},
+    {
+        path: 'sponsor.register/:id',
+        canActivate: [AuthGuard],
+        component: SponsorRegisterComponent
+    },
     { path: 'income.register', component: RegisterIncomeComponent, canActivate: [AuthGuard] },
-        { path: 'income.register/:id', 
-        canActivate: [ AuthGuard],
-        component: RegisterIncomeComponent},
+    {
+        path: 'income.register/:id',
+        canActivate: [AuthGuard],
+        component: RegisterIncomeComponent
+    },
     { path: 'income.list', component: IncomeListComponent, canActivate: [AuthGuard] },
     { path: 'expenditure.register', component: RegisterExpenditureComponent, canActivate: [AuthGuard] },
-        { path: 'expenditure.register/:id', 
-        canActivate: [ AuthGuard],
-        component: RegisterExpenditureComponent},
+    {
+        path: 'expenditure.register/:id',
+        canActivate: [AuthGuard],
+        component: RegisterExpenditureComponent
+    },
     { path: 'expenditure.list', component: ExpenditureListComponent, canActivate: [AuthGuard] },
     { path: 'payment.list', component: PaymentListComponent, canActivate: [AuthGuard] },
 
@@ -59,15 +69,5 @@ const appRoutes: Routes = [
     // otherwise redirect to home
     { path: '**', redirectTo: '' }
 ];
-/*
 
-    RouterModule.forChild([
-      { path: 'products', component: ProductListComponent },
-      { path: 'product/:id',
-        canActivate: [ ProductDetailGuard],
-        component: ProductDetailComponent
-      }
-    ])
-
-*/
 export const routing = RouterModule.forRoot(appRoutes);

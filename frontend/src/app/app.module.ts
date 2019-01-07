@@ -103,9 +103,9 @@ export class SharedMaterialModule { }
     SponsorListComponent,
     SponsorRegisterComponent,
     RegisterIncomeComponent,
-    RegisterExpenditureComponent,IncomeListComponent,  ExpenditureListComponent, PaymentListComponent,
+    RegisterExpenditureComponent, IncomeListComponent, ExpenditureListComponent, PaymentListComponent,
     SportListComponent, SportEventComponent, SportTeamComponent
-    
+
   ],
   imports: [
     BrowserModule,

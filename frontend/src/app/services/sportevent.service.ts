@@ -19,6 +19,13 @@ export class SportEventService {
         return this.http.get(this.API_URL + '/api/sportevent/' + id, this.jwt()).map((response: Response) => response.json());
     }
 
+    getByStatus(status: number) {       
+        return this.http.get(this.API_URL + '/api/sportevent', {
+            search:
+            { filter: JSON.stringify({"where": { status: status} })}
+        }).map((response: Response) => response.json());
+    }
+
     create(sportevent: SportEvent) {
         return this.http.post(this.API_URL + '/api/sportevent',sportevent, this.jwt()).map((response: Response) => response.json());
     }

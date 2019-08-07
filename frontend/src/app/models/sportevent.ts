@@ -9,7 +9,7 @@ export class SportEvent {
     type: number;
 
     datestart: Date;
-    datefinisht: Date;
+    datefinish: Date;
     
     constructor(
     ) { }

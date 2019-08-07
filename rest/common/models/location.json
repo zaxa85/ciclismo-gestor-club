@@ -1,0 +1,44 @@
+{
+  "name": "location",
+  "plural": "location",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "id": {
+      "type": "number",
+      "required": true
+    },
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "detail": {
+      "type": "string"
+    },
+    "type": {
+      "type": "string"
+    },
+    "link": {
+      "type": "string"
+    },
+    "status": {
+      "type": "number"
+    },
+    "longitude": {
+      "type": "number"
+    },
+    "latitude": {
+      "type": "number"
+    } 
+  },
+  "validations": [],
+  "relations": {
+  },
+  "acls": [],
+  "methods": {}
+}

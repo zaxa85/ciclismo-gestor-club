@@ -63,7 +63,13 @@ const appRoutes: Routes = [
     { path: 'payment.list', component: PaymentListComponent, canActivate: [AuthGuard] },
 
     { path: 'sport.list', component: SportListComponent, canActivate: [AuthGuard] },
+
     { path: 'sport.event', component: SportEventComponent, canActivate: [AuthGuard] },
+    {
+        path: 'sport.event/:id',
+        canActivate: [AuthGuard],
+        component: SportEventComponent
+    },
     { path: 'sport.team', component: SportTeamComponent, canActivate: [AuthGuard] },
 
     // otherwise redirect to home

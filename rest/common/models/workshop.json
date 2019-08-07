@@ -1,0 +1,44 @@
+{
+  "name": "workshop",
+  "plural": "workshop",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "id": {
+      "type": "number",
+      "required": true
+    },
+    "name": {
+      "type": "string"
+    },
+    "address": {
+      "type": "string"
+    },
+    "location": {
+      "type": "string"
+    },
+    "type": {
+      "type": "string"
+    },
+    "services": {
+      "type": "string"
+    },
+    "status": {
+      "type": "number"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "income": {
+      "type": "belongsTo",
+      "model": "income",
+      "foreignKey": "id",
+      "through": ""
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

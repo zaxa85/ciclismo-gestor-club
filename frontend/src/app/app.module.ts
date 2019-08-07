@@ -129,6 +129,7 @@ export class SharedMaterialModule { }
     IncomeService,
     ExpenditureService,
     PeriodService,
+    SportEventService,
     MediaMatcher,
     StorageService,
     { provide: ErrorHandler, useClass: CustomErrorHandler } // overrride default error handler

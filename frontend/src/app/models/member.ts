@@ -27,6 +27,14 @@ export class Member {
         - Kilometros por semana
         - Categoria actual
 
+
+        - tipo de sangrre
+        - tipo de seguro
+        - contacto emergencia 1
+        - contacto de emergencia 2
+        
+
+
     */
 
 

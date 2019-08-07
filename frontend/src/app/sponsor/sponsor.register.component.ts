@@ -17,9 +17,7 @@ export class SponsorRegisterComponent {
 
     statuses = [{ id: 1, name: "Activo" }, { id: 0, name: "Inactivo" }];
     documenttypes = [{ id: 1, name: "RUC" }, { id: 0, name: "DNI" }, { id: 3, name: "Otro" }];
-
-    test: string;
-
+    
     constructor(
         private route: ActivatedRoute,
         private router: Router,

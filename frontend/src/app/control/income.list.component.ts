@@ -12,7 +12,7 @@ import { AlertService, AuthenticationService, IncomeService, PeriodService } fro
 export class IncomeListComponent {
     //currentUser: User;
     model: any;
-    statusFilter = '0: 2016';
+    statusFilter = '0: 2019';
     periods: Period[] = [];
 
     constructor(

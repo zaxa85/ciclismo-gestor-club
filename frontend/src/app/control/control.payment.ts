@@ -17,7 +17,7 @@ import { AlertService, AuthenticationService, PeriodService } from '../services/
 export class ControlPaymentComponent implements OnInit {
     //currentUser: User;
     model: any;
-    statusFilter = '0: 2016';
+    statusFilter = '0: 2019';
     periods: Period[] = [];
 
     constructor(

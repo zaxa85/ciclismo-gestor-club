@@ -16,7 +16,10 @@ import { SportEvent } from '../models/index';
 export class SportEventComponent {
     currentUser: User;
     statuses = [{ id: 1, name: "Activo" }, { id: 0, name: "Inactivo" }];
-
+    eventtype = [{ id: 1, name: "Rally" }, { id: 2, name: "XC" }, { id: 3, name: "XCO" }, { id: 4, name: "XCM" },
+    { id: 5, name: "Enduro" }, { id: 6, name: "Downhill" }, { id: 7, name: "Ruta" }, { id: 8, name: "Entrenamiento" },
+    { id: 9, name: "Tour - Paseo" }, { id: -1, name: "Todos" }];
+    
     statusFilter = 1;
     sportEvent : SportEvent;
     loading = false;

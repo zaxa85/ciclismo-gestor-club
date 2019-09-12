@@ -12,7 +12,7 @@ import { AlertService, AuthenticationService, ExpenditureService, PeriodService 
 export class ExpenditureListComponent {
     //currentUser: User;
     model: any;
-    statusFilter = '0: 2016';
+    statusFilter = '0: 2019';
     periods: Period[] = [];
 
     constructor(

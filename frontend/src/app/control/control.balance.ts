@@ -11,12 +11,11 @@ import { AlertService, AuthenticationService, PeriodService, PaymentService, Inc
 
 export class ControlBalanceComponent implements OnInit {
     //currentUser: User;
-    statusFilter = '0: 2016';
+    statusFilter = '0: 2019';
     periods: Period[] = [];
     viewIncomesByMembers = 0;
     viewExpendituresPerPeriod = 0;
     viewIncomessPerPeriod = 0;
-    //result: any;
     paymentControl: any;
     incomesByType: any;
     expendituresByType: any;

@@ -1,51 +1,62 @@
 <div class="col-md-6 col-md-offset-3">
 	<h4>
-		 Registro de Evento 
+		Registro de Evento
 	</h4>
 
-	<form data-toggle="validator" role="form" name="form" (ngSubmit)="f.form.valid && register()" #f="ngForm" novalidate>
-	
+	<form data-toggle="validator" role="form" name="form" (ngSubmit)="f.form.valid && register()" #f="ngForm"
+		novalidate>
+
 		<div class="form-group" [ngClass]="{ 'has-error': f.submitted }">
-			<input type="hidden" class="form-control" name="id" [(ngModel)]="sportEvent.id" #id="ngModel" value="{{sportEvent.id}}" />
+			<input type="hidden" class="form-control" name="id" [(ngModel)]="sportEvent.id" #id="ngModel"
+				value="{{sportEvent.id}}" />
 		</div>
 		<div class="form-group" [ngClass]="{ 'has-error': f.submitted  && !status.valid}">
-			<label for="status">Estado</label> <select class="form-control" [(ngModel)]="sportEvent.status" name=status #status="ngModel" >
+			<label for="status">Estado</label> <select class="form-control" [(ngModel)]="sportEvent.status" name=status
+				#status="ngModel">
 				<option *ngFor="let c of statuses" [ngValue]="c.id">{{c.name}}</option>
 			</select>
-		</div>	
- 
+		</div>
+
 		<div class="form-group" [ngClass]="{ 'has-error': f.submitted && !name.valid }">
-			<label for="name">Nombre Comercial</label> <input type="text" class="form-control" name="name" [(ngModel)]="sportEvent.name" #name="ngModel" required value="{{sportEvent.name}}" />
+			<label for="name">Nombre Comercial</label> <input type="text" class="form-control" name="name"
+				[(ngModel)]="sportEvent.name" #name="ngModel" required value="{{sportEvent.name}}" />
 			<div *ngIf="f.name && !name.valid" class="help-block">Nombre comercial es requerido</div>
 		</div>
 
 		<div class="form-group" [ngClass]="{ 'has-error': f.submitted && !organizer.valid }">
-			<label for="organizer">organizer</label> <input type="text" class="form-control" name="organizer" [(ngModel)]="sportEvent.organizer" #organizer="ngModel" required value="{{sportEvent.organizer}}" />
+			<label for="organizer">Organizador</label> <input type="text" class="form-control" name="organizer"
+				[(ngModel)]="sportEvent.organizer" #organizer="ngModel" required value="{{sportEvent.organizer}}" />
 			<div *ngIf="f.organizer && !organizer.valid" class="help-block">Nombre comercial es requerido</div>
 		</div>
 
 		<div class="form-group" [ngClass]="{ 'has-error': f.submitted && !location.valid }">
-			<label for="location">location</label> <input type="text" class="form-control" name="location" [(ngModel)]="sportEvent.location" #name="ngModel" required value="{{sportEvent.location}}" />
+			<label for="location">Ubicación</label> <input type="text" class="form-control" name="location"
+				[(ngModel)]="sportEvent.location" #location="ngModel" required value="{{sportEvent.location}}" />
 			<div *ngIf="f.location && !location.valid" class="help-block">Nombre comercial es requerido</div>
 		</div>
 
 		<div class="form-group" [ngClass]="{ 'has-error': f.submitted && !type.valid }">
-			<label for="type">tipo</label> <input type="text" class="form-control" name="type" [(ngModel)]="sportEvent.type" #name="ngModel" required value="{{sportEvent.type}}" />
+			<label for="type">Tipo</label>
 			<div *ngIf="f.type && !type.valid" class="help-block">Nombre comercial es requerido</div>
+			<select class="form-control" [(ngModel)]="sportEvent.type" name=type>
+				<option *ngFor="let c of eventtype" value="{{c.id}}">{{c.name}}</option>
+			</select>
 		</div>
 
 		<div class="form-group" [ngClass]="{ 'has-error': f.submitted && !datestart.valid}">
-			<label for="datestart">Fecha de Inicio [MM/DD/YYYY]</label> <input type="date" class="form-control" name="datestart"
-			 required [ngModel]="sportEvent.datestart | date: 'yyyy-MM-dd'" #datestart="ngModel" required (ngModelChange)="dateChanged1($event)" />
+			<label for="datestart">Fecha de Inicio [MM/DD/YYYY]</label> <input type="date" class="form-control"
+				name="datestart" required [ngModel]="sportEvent.datestart | date: 'yyyy-MM-dd'" #datestart="ngModel"
+				required (ngModelChange)="dateChanged1($event)" />
 			<div *ngIf="f.submitted && !datestart.valid" class="help-block">La fecha de Inicio es obligatorio</div>
 		</div>
 
 		<div class="form-group" [ngClass]="{ 'has-error': f.submitted && !datefinish.valid}">
-			<label for="datefinish">Fecha de Fin [MM/DD/YYYY]</label> <input type="date" class="form-control" name="datefinish"
-			 required [ngModel]="sportEvent.datefinish | date: 'yyyy-MM-dd'" #datefinish="ngModel" required (ngModelChange)="dateChanged2($event)" />
+			<label for="datefinish">Fecha de Fin [MM/DD/YYYY]</label> <input type="date" class="form-control"
+				name="datefinish" required [ngModel]="sportEvent.datefinish | date: 'yyyy-MM-dd'" #datefinish="ngModel"
+				required (ngModelChange)="dateChanged2($event)" />
 			<div *ngIf="f.submitted && !datefinish.valid" class="help-block">La fecha de Fin es obligatorio</div>
 		</div>
-		
+
 		<div class="form-group">
 			<button type="submit" [disabled]="loading" class="btn btn-primary">Guardar</button>
 			<img *ngIf="loading"

@@ -18,7 +18,7 @@ export class PeriodService {
     getByStatus(status: number) {       
         return this.http.get(this.API_URL + '/api/period', {
             search:
-            { filter: JSON.stringify({"where": { status: status} , "order": "id DESC"})}
+            { filter: JSON.stringify({"where": { status: status}, "order": "id DESC"})}
         }).map((response: Response) => response.json());
     }
 

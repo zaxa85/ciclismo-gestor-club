@@ -28,8 +28,8 @@ export class SportEventService {
 
     getByStatusAndPeriod(period: number, status: number) {       
         return this.http.get(this.API_URL + '/api/sportevent', {
-            search:
-            { filter: JSON.stringify({"where": { status: status, id_fk_period_id: period} })}
+            search: 
+            { filter: JSON.stringify({"where": { status: status, id_fk_period_id: period}, "order": "datestart ASC"})}
         }).map((response: Response) => response.json());
     }
 

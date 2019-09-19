@@ -6,6 +6,8 @@
 export const environment = {
   production: true,
 
-    // URL of development API
-    apiUrl: 'http://localhost:3000'
-};
+    // URL of development API    apiUrl: 'http://104.131.102.15:3000'
+    // URL of development API     apiUrl: 'http://localhost:3000'
+
+    apiUrl: 'http://104.131.102.15:3000'
+  };

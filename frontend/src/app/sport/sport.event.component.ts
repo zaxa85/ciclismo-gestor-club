@@ -50,7 +50,6 @@ export class SportEventComponent {
                     this.alertService.error(error);
                     this.loading = false;
                 });
-
         }
         else {
 
@@ -73,7 +72,8 @@ export class SportEventComponent {
         //Initializing income
         this.sportEvent = new SportEvent();
         this.sportEvent.status = 1;
- 
+        this.sportEvent.id_fk_period_id = (new Date()).getFullYear();
+
         //Loading income if it exists
         this.sub = this.route.params
             .subscribe(

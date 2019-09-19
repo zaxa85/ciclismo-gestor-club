@@ -35,13 +35,11 @@
 			<div *ngIf="f.location && !location.valid" class="help-block">Nombre comercial es requerido</div>
 		</div>
 
-		<div class="form-group" [ngClass]="{ 'has-error': f.submitted && !type.valid }">
-			<label for="type">Tipo</label>
-			<div *ngIf="f.type && !type.valid" class="help-block">Nombre comercial es requerido</div>
-			<select class="form-control" [(ngModel)]="sportEvent.type" name=type>
-				<option *ngFor="let c of eventtype" value="{{c.id}}">{{c.name}}</option>
+		<div class="form-group" [ngClass]="{ 'has-error': f.submitted  && !type.valid}">
+			<label for="type">Tipo</label> <select class="form-control" [(ngModel)]="sportEvent.type" name=type #type="ngModel" >
+				<option *ngFor="let c of eventtype" [ngValue]="c.id">{{c.name}}</option>
 			</select>
-		</div>
+		</div>	
 
 		<div class="form-group" [ngClass]="{ 'has-error': f.submitted && !datestart.valid}">
 			<label for="datestart">Fecha de Inicio [MM/DD/YYYY]</label> <input type="date" class="form-control"

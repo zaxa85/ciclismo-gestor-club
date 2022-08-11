@@ -18,7 +18,7 @@
     "loopback-boot": "^2.6.5",
     "loopback-component-explorer": "^2.4.0",
     "loopback-component-storage": "^3.5.0",
-    "loopback-connector-postgresql": "^2.8.0",
+    "loopback-connector-postgresql": "^5.5.1",
     "loopback-datasource-juggler": "^2.39.0",
     "serve-favicon": "^2.5.0",
     "strong-error-handler": "^1.2.1"
